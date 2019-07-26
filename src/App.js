@@ -13,7 +13,7 @@ class Movie8r extends React.Component {
 
     this.state = {
       searchWords: "300",
-      genre: "Popular",
+      genre: '',
       page: 1
     };
 
