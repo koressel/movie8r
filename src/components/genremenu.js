@@ -29,7 +29,6 @@ class GenreMenu extends React.Component {
         <option>Mystery</option>
         <option>Romance</option>
         <option>Science Fiction</option>
-        <option>TV</option>
         <option>Thriller</option>
         <option>War</option>
         <option>Western</option>

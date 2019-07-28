@@ -14,8 +14,6 @@ class MovieDisplay extends React.Component {
 
   }
 
-
-
   componentDidMount() {
     let url = `${this.state.baseURL}discover/movie?&api_key=${this.state.APIKEY}`;
 
@@ -107,9 +105,6 @@ class MovieDisplay extends React.Component {
       case 'Science Fiction':
         id = 878;
         break;
-      case 'TV Movie':
-        id = 10770;
-        break;
       case 'Thriller':
         id = 53;
         break;
@@ -130,8 +125,6 @@ class MovieDisplay extends React.Component {
     return (
       <div id="movie-display">
         {this.state.movies}
-        {/* <p>Genre: {this.getGenreID(this.props.genre)}</p>
-        <p>Search Words: {this.props.searchWords}</p> */}
       </div>
     )
   }
