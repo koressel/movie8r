@@ -1,3 +1,7 @@
 .movie {
   display: inline;
 }
+
+#pagination p,button {
+  display: inline;
+}

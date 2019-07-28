@@ -1,5 +1,4 @@
 import React from "react";
-import { isGenericTypeAnnotation } from "@babel/types";
 
 class MovieDisplay extends React.Component {
   constructor(props) {

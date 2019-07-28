@@ -5,6 +5,7 @@ import './App.css';
 import SearchBar from './components/searchbar';
 import GenreMenu from './components/genremenu';
 import MovieDisplay from './components/moviedisplay';
+import Pagination from './components/pagination';
 
 class Movie8r extends React.Component {
 
@@ -19,19 +20,26 @@ class Movie8r extends React.Component {
 
     this.newSearch = this.newSearch.bind(this);
     this.genreChange = this.genreChange.bind(this);
+    this.pageChange = this.pageChange.bind(this);
   }
 
-  newSearch(searchWords) {
-    this.setState({ searchWords: searchWords });
+  newSearch(_searchWords) {
+    this.setState({ searchWords: _searchWords });
   }
 
-  genreChange(genre) {
-    this.setState({ genre: genre });
+  genreChange(_genre) {
+    this.setState({ genre: _genre });
+  }
+
+  pageChange(_page) {
+    this.setState({ page: _page });
   }
 
   render() {
     return (
       <div className="movie8r">
+
+        <Pagination pageChange={this.pageChange}></Pagination>
 
         <SearchBar newSearch={this.newSearch}></SearchBar>
 
@@ -40,8 +48,11 @@ class Movie8r extends React.Component {
         <MovieDisplay
           searchWords={this.state.searchWords}
           genre={this.state.genre}
+          page={this.state.page}
         >
         </MovieDisplay>
+
+
 
       </div>
     )
