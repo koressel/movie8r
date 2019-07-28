@@ -5,7 +5,6 @@ import './App.css';
 import SearchBar from './components/searchbar';
 import GenreMenu from './components/genremenu';
 import MovieDisplay from './components/moviedisplay';
-import Pagination from './components/pagination';
 
 class Movie8r extends React.Component {
 
@@ -14,7 +13,7 @@ class Movie8r extends React.Component {
 
     this.state = {
       searchWords: "300",
-      genre: '',
+      genre: 'Action',
       page: 1
     };
 
@@ -40,30 +39,20 @@ class Movie8r extends React.Component {
     return (
       <div className="movie8r">
 
-      /*
-      *
-      **********************************************************************************************
-      *                                                                                            *
-      * Pagination needs to be a child of the moviedisplay component w/ multidirectional data flow *
-      *                                                                                            *
-      **********************************************************************************************
-      *
-      */
-
-        <Pagination pageChange={this.pageChange}></Pagination>
-
         <SearchBar newSearch={this.newSearch}></SearchBar>
 
-        <GenreMenu genreChange={this.genreChange}></GenreMenu>
+        <GenreMenu
+          genreChange={this.genreChange}
+          pageChange={this.pageChange}
+        ></GenreMenu>
 
         <MovieDisplay
           searchWords={this.state.searchWords}
           genre={this.state.genre}
           page={this.state.page}
+          pageChange={this.pageChange}
         >
         </MovieDisplay>
-
-
 
       </div>
     )

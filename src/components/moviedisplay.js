@@ -1,4 +1,6 @@
 import React from "react";
+import Pagination from './pagination';
+
 
 class MovieDisplay extends React.Component {
   constructor(props) {
@@ -12,6 +14,8 @@ class MovieDisplay extends React.Component {
       page: 1
     };
 
+    this.pageChange = this.pageChange.bind(this);
+
   }
 
   componentDidMount() {
@@ -21,7 +25,6 @@ class MovieDisplay extends React.Component {
       .then(res => res.json())
       .then(resultObj => {
         let result = resultObj.results;
-
         let movies = result.map(movie => {
           return (
             <div className="movie" key={movie.id}>
@@ -35,9 +38,13 @@ class MovieDisplay extends React.Component {
   }
 
   componentDidUpdate() {
+    console.log('updated')
+
+    let genre = this.getGenreID(this.props.genre);
+    let url;
+
     if (this.props.genre !== this.state.genre) {
-      let genre = this.getGenreID(this.props.genre);
-      let url = `${this.state.baseURL}discover/movie?with_genres=${genre}&api_key=${this.state.APIKEY}`;
+      url = `${this.state.baseURL}discover/movie?with_genres=${genre}&page=${this.state.page}&api_key=${this.state.APIKEY}`;
 
       fetch(url)
         .then(res => res.json())
@@ -52,8 +59,61 @@ class MovieDisplay extends React.Component {
           });
 
           this.setState({ movies: movies, genre: this.props.genre })
-
+          return;
         });
+    }
+    else {
+      if (this.state.page !== this.props.page) {
+        console.log('hell');
+        url = `${this.state.baseURL}discover/movie?with_genres=${genre}&page=${this.state.page}&api_key=${this.state.APIKEY}`;
+
+        fetch(url)
+          .then(res => res.json())
+          .then(resultObj => {
+            let result = resultObj.results;
+            let movies = result.map(movie => {
+              return (
+                <div className="movie" key={movie.id}>
+                  <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
+                </div>
+              );
+            });
+            this.setState({ movies: movies });
+            this.props.pageChange(this.state.page);
+          });
+      }
+      // else {
+      //   let url = `${this.state.baseURL}discover/movie?&api_key=${this.state.APIKEY}`;
+
+      //   fetch(url)
+      //     .then(res => res.json())
+      //     .then(resultObj => {
+      //       let result = resultObj.results;
+      //       let movies = result.map(movie => {
+      //         return (
+      //           <div className="movie" key={movie.id}>
+      //             <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
+      //           </div>
+      //         );
+      //       });
+
+      //       this.setState({ movies: movies });
+      //     });
+      // }
+    }
+
+
+
+  }
+
+
+
+  pageChange(direction) {
+    if (direction === "forward") {
+      this.setState({ page: (Number(this.state.page + 1)) });
+    }
+    if (direction === 'back') {
+      this.setState({ page: (Number(this.state.page - 1)) });
     }
   }
 
@@ -126,6 +186,9 @@ class MovieDisplay extends React.Component {
     return (
       <div id="movie-display">
         {this.state.movies}
+        <Pagination
+          pageChange={this.pageChange}
+        ></Pagination>
       </div>
     )
   }

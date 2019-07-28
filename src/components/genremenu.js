@@ -8,12 +8,12 @@ class GenreMenu extends React.Component {
 
   handleChange(e) {
     this.props.genreChange(e.target.value);
+    this.props.pageChange(1);
   }
 
   render() {
     return (
       <select onChange={this.handleChange}>
-        <option>New Release</option>
         <option>Action</option>
         <option>Adventure</option>
         <option>Animation</option>
