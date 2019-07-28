@@ -29,6 +29,7 @@ class Movie8r extends React.Component {
 
   genreChange(_genre) {
     this.setState({ genre: _genre });
+    this.pageChange(1);
   }
 
   pageChange(_page) {
@@ -38,6 +39,16 @@ class Movie8r extends React.Component {
   render() {
     return (
       <div className="movie8r">
+
+      /*
+      *
+      **********************************************************************************************
+      *                                                                                            *
+      * Pagination needs to be a child of the moviedisplay component w/ multidirectional data flow *
+      *                                                                                            *
+      **********************************************************************************************
+      *
+      */
 
         <Pagination pageChange={this.pageChange}></Pagination>
 

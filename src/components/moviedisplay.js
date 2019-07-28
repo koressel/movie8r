@@ -8,7 +8,8 @@ class MovieDisplay extends React.Component {
       APIKEY: '5dee9b99bfc124fbabfa815c9bb193ba',
       baseURL: 'https://api.themoviedb.org/3/',
       genre: '',
-      movies: []
+      movies: [],
+      page: 1
     };
 
   }
@@ -49,6 +50,7 @@ class MovieDisplay extends React.Component {
               </div>
             );
           });
+
           this.setState({ movies: movies, genre: this.props.genre })
 
         });

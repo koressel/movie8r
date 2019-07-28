@@ -18,7 +18,7 @@ class Pagination extends React.Component {
     }
 
     if (buttonClicked === "back-button") {
-      if (page === 0) {
+      if (page === 1) {
         return;
       }
       nextPage = page - 1;
