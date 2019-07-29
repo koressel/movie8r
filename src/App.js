@@ -91,12 +91,13 @@ class Movie8r extends React.Component {
       }
       else {
         if (this.state.currentSearchWords !== this.state.nextSearchWords) {
-          url = `${this.state.baseURL}search/movie?&api_key=${this.state.APIKEY}&query=${this.props.searchWords}`;
+          url = `${this.state.baseURL}search/movie?&api_key=${this.state.APIKEY}&query=${this.state.nextSearchWords}`;
 
           fetch(url)
             .then(res => res.json())
             .then(resultObj => {
               let result = resultObj.results;
+              console.log(resultObj);
               let movies = result.map(movie => {
                 return (
                   <div className="movie" key={movie.id}>
@@ -113,7 +114,7 @@ class Movie8r extends React.Component {
   }
 
   newSearch(_nextSearchWords) {
-    this.setState({ newSearchWords: _nextSearchWords });
+    this.setState({ nextSearchWords: _nextSearchWords });
   }
 
   genreChange(_nextGenre) {

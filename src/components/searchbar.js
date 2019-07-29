@@ -9,13 +9,21 @@ class SearchBar extends React.Component {
   }
 
   handleSearchButtonClick() {
-    let searchWords = document.querySelector('#search-text').value;
+    let searchTextElement = document.querySelector('#search-text');
+    let searchWords = searchTextElement.value;
+    searchTextElement.value = '';
+    searchTextElement.placeholder = searchWords;
+    searchTextElement.blur();
     this.props.newSearch(searchWords);
   }
 
   handleKeyPress(e) {
     if (e.key === 'Enter') {
-      let searchWords = document.querySelector('#search-text').value;
+      let searchTextElement = document.querySelector('#search-text');
+      let searchWords = searchTextElement.value;
+      searchTextElement.value = '';
+      searchTextElement.placeholder = searchWords;
+      searchTextElement.blur();
       this.props.newSearch(searchWords);
     }
   }
