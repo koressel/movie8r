@@ -7,6 +7,11 @@ class Pagination extends React.Component {
     this.handlePageChange = this.handlePageChange.bind(this);
   }
 
+  componentDidUpdate() {
+    let pageElement = document.querySelector('#page');
+    pageElement.innerHTML = this.props.page;
+  }
+
   handlePageChange(e) {
     let pageElement = document.querySelector('#page');
     let page = Number(pageElement.innerHTML);
