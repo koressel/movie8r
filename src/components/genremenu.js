@@ -7,7 +7,7 @@ class GenreMenu extends React.Component {
   }
 
   handleChange(e) {
-    // this.props.pageChange(1);
+    this.props.pageChange(1);
     this.props.genreChange(e.target.value);
   }
 

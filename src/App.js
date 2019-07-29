@@ -192,7 +192,10 @@ class Movie8r extends React.Component {
     return (
       <div className="App" >
         <SearchBar newSearch={this.newSearch}></SearchBar>
-        <GenreMenu genreChange={this.genreChange}></GenreMenu>
+        <GenreMenu
+          genreChange={this.genreChange}
+          pageChange={this.pageChange}
+        ></GenreMenu>
         <Pagination
           pageChange={this.pageChange}
           currentPage={this.state.page}
