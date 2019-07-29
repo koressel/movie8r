@@ -17,11 +17,9 @@ class Pagination extends React.Component {
     let page = Number(pageElement.innerHTML);
     let buttonClicked = e.target.id;
     let nextPage;
-    let direction;
 
     if (buttonClicked === "forward-button") {
       nextPage = page + 1;
-      direction = 'forward';
     }
 
     if (buttonClicked === "back-button") {
@@ -29,11 +27,10 @@ class Pagination extends React.Component {
         return;
       }
       nextPage = page - 1;
-      direction = 'back'
     }
 
-    this.props.pageChange(direction);
-    pageElement.innerHTML = nextPage;
+    this.props.pageChange(nextPage);
+    // pageElement.innerHTML = nextPage;
   }
 
 
