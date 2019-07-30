@@ -65,85 +65,73 @@ class Movie8r extends React.Component {
           this.setState({ movies: movies, currentURL: this.state.nextURL });
         });
     }
-
-    //   let genre = this.getGenreID(this.state.nextGenre);
-    //   let url;
-
-    //   if (this.state.currentGenre !== this.state.nextGenre) {
-    //     url = `${this.state.baseURL}discover/movie?with_genres=${genre}&api_key=${this.state.APIKEY}`;
-
-    //     fetch(url)
-    //       .then(res => res.json())
-    //       .then(resultObj => {
-    //         let result = resultObj.results;
-    //         let movies = result.map(movie => {
-    //           return (
-    //             <div className="movie" key={movie.id}>
-    //               <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
-    //             </div>
-    //           );
-    //         });
-
-    //         this.setState({ movies: movies, currentGenre: this.state.nextGenre });
-    //         return;
-    //       });
-    //   }
-    //   else {
-    //     if (this.state.currentPage !== this.state.nextPage) {
-    //       let genre = this.getGenreID(this.state.currentGenre);
-    //       url = `${this.state.baseURL}discover/movie?with_genres=${genre}&page=${this.state.nextPage}&api_key=${this.state.APIKEY}`;
-
-    //       fetch(url)
-    //         .then(res => res.json())
-    //         .then(resultObj => {
-    //           let result = resultObj.results;
-    //           let movies = result.map(movie => {
-    //             return (
-    //               <div className="movie" key={movie.id}>
-    //                 <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
-    //               </div>
-    //             );
-    //           });
-    //           this.setState({ movies: movies, currentPage: this.state.nextPage });
-    //         });
-    //     }
-    //     else {
-    //       if (this.state.currentSearchWords !== this.state.nextSearchWords) {
-    //         url = `${this.state.baseURL}search/movie?&api_key=${this.state.APIKEY}&query=${this.state.nextSearchWords}`;
-
-    //         fetch(url)
-    //           .then(res => res.json())
-    //           .then(resultObj => {
-    //             let result = resultObj.results;
-    //             console.log(resultObj);
-    //             let movies = result.map(movie => {
-    //               return (
-    //                 <div className="movie" key={movie.id}>
-    //                   <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
-    //                 </div>
-    //               );
-    //             });
-    //             this.setState({ movies: movies, currentSearchWords: this.state.nextSearchWords });
-    //           });
-    //       }
-
-    //     }
-    //   }
   }
 
-  newSearch(_nextSearchWords) {
-    this.setState({ nextSearchWords: _nextSearchWords });
+  newSearch(keywords) {
+    let currentURL = this.state.currentURL;
+
+    // change directory
+    let params = currentURL.substring(44);
+    let _nextURL = `${this.state.baseURL}search/movie?${params}`;
+    console.log(_nextURL);
+
+    // write query to url
+    let start = _nextURL.search('&query=');
+    if (start !== -1) {
+      start += 7;
+      _nextURL = _nextURL.substring(0, start);
+      _nextURL += keywords
+    }
+    else {
+      _nextURL += `&query=${keywords}`;
+    }
+
+    // remove genre 
+    let gstart = _nextURL.search('with_genres=');
+    if (gstart !== -1) {
+      let gvalue = _nextURL.substring(gstart);
+      let gend = gvalue.indexOf('&');
+      gend = gstart + gend;
+      _nextURL = _nextURL.substring(0, gstart - 1) + _nextURL.substring(gend - 1);
+    }
+
+    this.setState({ nextURL: encodeURI(_nextURL) });
   }
 
   genreChange(genreID) {
     let currentURL = this.state.currentURL;
-    let start = currentURL.search('&with_genres=');
-    start += 13;
-    let value = currentURL.substring(start);
-    let end = value.indexOf('&');
-    end = start + end;
+    let _nextURL;
 
-    let _nextURL = currentURL.substring(0, start) + genreID + currentURL.substring(end);
+    // change directory
+    let dir = 'https://api.themoviedb.org/3/discover/movie?';
+    if (this.state.currentURL.substring(0, 42) === 'https://api.themoviedb.org/3/search/movie?') {
+      currentURL = dir + currentURL.substring(42)
+    }
+
+    let start = currentURL.search('&with_genres=');
+    if (start !== -1) {
+      // update genreID
+      start += 13;
+      console.log(start)
+      let value = currentURL.substring(start);
+      let end = value.indexOf('&');
+      end = start + end;
+      _nextURL = currentURL.substring(0, start) + genreID + currentURL.substring(end);
+    }
+    // add genreID
+    else {
+      start = currentURL.search('/movie?');
+      start += 7;
+      _nextURL = currentURL.substring(0, start) + '&with_genres=' + genreID + currentURL.substring((start + 1));
+    }
+
+    // remove query
+    let qstart = _nextURL.search('&query=');
+
+    if (qstart !== -1) {
+      _nextURL = _nextURL.substring(0, qstart);
+    }
+
     this.setState({ nextURL: _nextURL });
   }
 
