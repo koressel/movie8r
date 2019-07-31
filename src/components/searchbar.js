@@ -11,10 +11,16 @@ class SearchBar extends React.Component {
   handleSearchButtonClick() {
     let searchTextElement = document.querySelector('#search-text');
     let searchWords = searchTextElement.value;
-    searchTextElement.value = '';
-    searchTextElement.placeholder = searchWords;
-    searchTextElement.blur();
-    this.props.newSearch(searchWords);
+    if (searchWords === '') {
+      return;
+    }
+    else {
+      searchTextElement.value = '';
+      searchTextElement.placeholder = searchWords;
+      searchTextElement.blur();
+      this.props.newSearch(searchWords);
+    }
+
   }
 
   handleKeyPress(e) {

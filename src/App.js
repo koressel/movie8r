@@ -12,16 +12,11 @@ class Movie8r extends React.Component {
     this.state = {
       APIKEY: '5dee9b99bfc124fbabfa815c9bb193ba',
       baseURL: 'https://api.themoviedb.org/3/',
-      currentGenre: 'Action',
-      nextGenre: 'Action',
       movies: [],
-      currentPage: 1,
-      nextPage: 1,
-      currentSearchWords: '',
-      nextSearchWords: '',
       currentURL: 'https://api.themoviedb.org/3/discover/movie?&with_genres=28&api_key=5dee9b99bfc124fbabfa815c9bb193ba',
       nextURL: '',
-      page: 1
+      page: 1,
+      maxPage: 1
 
     };
 
@@ -34,6 +29,7 @@ class Movie8r extends React.Component {
     fetch(this.state.currentURL)
       .then(res => res.json())
       .then(resultObj => {
+        let maxPage = resultObj.total_pages;
         let result = resultObj.results;
         let movies = result.map(movie => {
           return (
@@ -43,7 +39,7 @@ class Movie8r extends React.Component {
           );
         });
 
-        this.setState({ movies: movies });
+        this.setState({ movies: movies, maxPage: maxPage });
       });
   }
 
@@ -54,10 +50,15 @@ class Movie8r extends React.Component {
       fetch(this.state.nextURL)
         .then(res => res.json())
         .then(resultObj => {
-          // disable forward button if only page of results
-          if (resultObj.total_pages === 1) {
+
+          let _maxPage = resultObj.total_pages;
+          if (this.state.page === _maxPage) {
             let nextPageBTN = document.querySelector('#forward-button');
             nextPageBTN.disabled = true;
+          }
+          else {
+            let nextPageBTN = document.querySelector('#forward-button');
+            nextPageBTN.disabled = false;
           }
 
           //update movies
@@ -70,12 +71,17 @@ class Movie8r extends React.Component {
             );
           });
 
-          this.setState({ movies: movies, currentURL: this.state.nextURL });
+          this.setState({
+            movies: movies,
+            currentURL: this.state.nextURL,
+            maxPage: _maxPage
+          });
         });
     }
   }
 
   newSearch(keywords) {
+
     let currentURL = this.state.currentURL;
 
     // change directory
@@ -180,25 +186,36 @@ class Movie8r extends React.Component {
   }
 
   pageChange(page) {
-    let currentURL = this.state.currentURL;
-    let _nextURL;
 
-    let start = currentURL.search('page=');
-    if (start !== -1) {
-      start += 5;
-      let value = currentURL.substring(start);
-      let end = value.indexOf('&');
-      end = start + end;
-      _nextURL = currentURL.substring(0, start) + page + currentURL.substring(end);
+    if (page === this.state.maxPage) {
+      //disable forward button if only page of results
+      let nextPageBTN = document.querySelector('#forward-button');
+      nextPageBTN.disabled = true;
     }
     else {
-      let insertionPoint = currentURL.search('/movie?');
-      insertionPoint += 7;
-      // insertionPoint += 21;
-      _nextURL = currentURL.substring(0, insertionPoint) + '&page=' + page + currentURL.substring(insertionPoint);
+      let nextPageBTN = document.querySelector('#forward-button');
+      nextPageBTN.disabled = false;
+      let currentURL = this.state.currentURL;
+      let _nextURL;
+
+      let start = currentURL.search('page=');
+      if (start !== -1) {
+        start += 5;
+        let value = currentURL.substring(start);
+        let end = value.indexOf('&');
+        end = start + end;
+        _nextURL = currentURL.substring(0, start) + page + currentURL.substring(end);
+      }
+      else {
+        let insertionPoint = currentURL.search('/movie?');
+        insertionPoint += 7;
+        // insertionPoint += 21;
+        _nextURL = currentURL.substring(0, insertionPoint) + '&page=' + page + currentURL.substring(insertionPoint);
+      }
+
+      this.setState({ nextURL: encodeURI(_nextURL), page: page });
     }
 
-    this.setState({ nextURL: encodeURI(_nextURL), page: page });
   }
 
   getGenreID(genre) {
