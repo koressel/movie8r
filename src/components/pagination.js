@@ -7,11 +7,6 @@ class Pagination extends React.Component {
     this.handlePageChange = this.handlePageChange.bind(this);
   }
 
-  componentDidUpdate() {
-    let pageElement = document.querySelector('#page');
-    pageElement.innerHTML = this.props.page;
-  }
-
   handlePageChange(e) {
     let pageElement = document.querySelector('#page');
     let page = Number(pageElement.innerHTML);
@@ -30,7 +25,7 @@ class Pagination extends React.Component {
     }
 
     this.props.pageChange(nextPage);
-    // pageElement.innerHTML = nextPage;
+    pageElement.innerHTML = nextPage;
   }
 
 
@@ -38,7 +33,7 @@ class Pagination extends React.Component {
     return (
       <div id="pagination">
         <button id="back-button" onClick={this.handlePageChange}>back icon</button>
-        <p id="page">1</p>
+        <p id="page">{this.props.page}</p>
         <button id="forward-button" onClick={this.handlePageChange}>forward icon</button>
       </div>
     )

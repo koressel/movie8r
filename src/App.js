@@ -20,7 +20,8 @@ class Movie8r extends React.Component {
       currentSearchWords: '',
       nextSearchWords: '',
       currentURL: 'https://api.themoviedb.org/3/discover/movie?&with_genres=28&api_key=5dee9b99bfc124fbabfa815c9bb193ba',
-      nextURL: ''
+      nextURL: '',
+      page: 1
 
     };
 
@@ -47,12 +48,19 @@ class Movie8r extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('updated')
+    // console.log('updated')
 
     if (this.state.nextURL !== this.state.currentURL) {
       fetch(this.state.nextURL)
         .then(res => res.json())
         .then(resultObj => {
+          // disable forward button if only page of results
+          if (resultObj.total_pages === 1) {
+            let nextPageBTN = document.querySelector('#forward-button');
+            nextPageBTN.disabled = true;
+          }
+
+          //update movies
           let result = resultObj.results;
           let movies = result.map(movie => {
             return (
@@ -73,7 +81,23 @@ class Movie8r extends React.Component {
     // change directory
     let params = currentURL.substring(44);
     let _nextURL = `${this.state.baseURL}search/movie?${params}`;
-    console.log(_nextURL);
+
+    // reset page to 1
+    let pstart = _nextURL.search('&page=');
+    if (pstart !== -1) {
+      pstart += 6;
+      let pvalue = _nextURL.substring(pstart);
+
+      let pend = pvalue.indexOf('&');
+      pend = pstart + pend;
+      _nextURL = _nextURL.substring(0, pstart) + '1' + _nextURL.substring(pend);
+
+    }
+    else {
+      pstart = _nextURL.search('/movie?');
+      pstart += 7;
+      _nextURL = _nextURL.substring(0, pstart) + '&page=1' + _nextURL.substring(pstart);
+    }
 
     // write query to url
     let start = _nextURL.search('&query=');
@@ -92,13 +116,18 @@ class Movie8r extends React.Component {
       let gvalue = _nextURL.substring(gstart);
       let gend = gvalue.indexOf('&');
       gend = gstart + gend;
-      _nextURL = _nextURL.substring(0, gstart - 1) + _nextURL.substring(gend - 1);
+      _nextURL = _nextURL.substring(0, gstart - 1) + _nextURL.substring(gend);
     }
 
-    this.setState({ nextURL: encodeURI(_nextURL) });
+    this.setState({ nextURL: encodeURI(_nextURL), page: 1 });
   }
 
   genreChange(genreID) {
+    let nextPageBTN = document.querySelector('#forward-button');
+    nextPageBTN.disabled = false;
+    let searchText = document.querySelector('#search-text');
+    searchText.placeholder = '';
+
     let currentURL = this.state.currentURL;
     let _nextURL;
 
@@ -108,35 +137,68 @@ class Movie8r extends React.Component {
       currentURL = dir + currentURL.substring(42)
     }
 
-    let start = currentURL.search('&with_genres=');
+    // reset page to 1
+    let pstart = currentURL.search('&page=');
+    if (pstart !== -1) {
+      pstart += 6;
+      let pvalue = currentURL.substring(pstart);
+
+      let pend = pvalue.indexOf('&');
+      pend = pstart + pend;
+      _nextURL = currentURL.substring(0, pstart) + '1' + currentURL.substring(pend);
+
+    }
+    else {
+      pstart = currentURL.search('/movie?');
+      pstart += 7;
+      _nextURL = currentURL.substring(0, pstart) + '&page=1' + currentURL.substring(pstart);
+    }
+
+    let start = _nextURL.search('&with_genres=');
     if (start !== -1) {
       // update genreID
       start += 13;
-      console.log(start)
-      let value = currentURL.substring(start);
+      let value = _nextURL.substring(start);
       let end = value.indexOf('&');
       end = start + end;
-      _nextURL = currentURL.substring(0, start) + genreID + currentURL.substring(end);
+      _nextURL = _nextURL.substring(0, start) + genreID + _nextURL.substring(end);
     }
     // add genreID
     else {
-      start = currentURL.search('/movie?');
+      start = _nextURL.search('/movie?');
       start += 7;
-      _nextURL = currentURL.substring(0, start) + '&with_genres=' + genreID + currentURL.substring((start + 1));
+      _nextURL = _nextURL.substring(0, start) + '&with_genres=' + genreID + _nextURL.substring(start);
     }
 
     // remove query
     let qstart = _nextURL.search('&query=');
-
     if (qstart !== -1) {
       _nextURL = _nextURL.substring(0, qstart);
     }
 
-    this.setState({ nextURL: _nextURL });
+    this.setState({ nextURL: encodeURI(_nextURL), page: 1 });
   }
 
-  pageChange(_nextPage) {
-    this.setState({ nextPage: _nextPage });
+  pageChange(page) {
+    let currentURL = this.state.currentURL;
+    let _nextURL;
+
+    let start = currentURL.search('page=');
+    if (start !== -1) {
+      start += 5;
+      let value = currentURL.substring(start);
+      let end = value.indexOf('&');
+      end = start + end;
+      _nextURL = currentURL.substring(0, start) + page + currentURL.substring(end);
+    }
+    else {
+      let insertionPoint = currentURL.search('/movie?');
+      insertionPoint += 7;
+      // insertionPoint += 21;
+      _nextURL = currentURL.substring(0, insertionPoint) + '&page=' + page + currentURL.substring(insertionPoint);
+    }
+
+    this.setState({ nextURL: encodeURI(_nextURL), page: page });
   }
 
   getGenreID(genre) {
@@ -215,8 +277,7 @@ class Movie8r extends React.Component {
         ></GenreMenu>
         <Pagination
           pageChange={this.pageChange}
-          currentPage={this.state.page}
-          page={this.state.currentPage}
+          page={this.state.page}
         ></Pagination>
         {this.state.movies}
       </div>
