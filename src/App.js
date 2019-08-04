@@ -131,7 +131,7 @@ class Movie8r extends React.Component {
   genreChange(genreID) {
     let nextPageBTN = document.querySelector('#forward-button');
     nextPageBTN.disabled = false;
-    let searchText = document.querySelector('#search-text');
+    let searchText = document.querySelector('.search');
     searchText.placeholder = '';
 
     let currentURL = this.state.currentURL;
@@ -284,19 +284,65 @@ class Movie8r extends React.Component {
 
   render() {
     return (
-      <div className="App" >
-        <SearchBar
-          newSearch={this.newSearch}
-        ></SearchBar>
-        <GenreMenu
-          genreChange={this.genreChange}
-          pageChange={this.pageChange}
-        ></GenreMenu>
+      <div className="App grey darken-4">
+
+
+        <nav>
+          <div className="nav-wrapper grey darken-3">
+            <div className="row">
+              <div className="col s1 m4 l6">
+                <a href="/" className="light-blue-text left"><i className="material-icons">graphic_eq</i></a>
+              </div>
+              <div className="col s4 m3 l2">
+                <div id="genre-select" className="input-field">
+                  <GenreMenu
+                    genreChange={this.genreChange}
+                    pageChange={this.pageChange}
+                  ></GenreMenu>
+                </div>
+              </div>
+              <SearchBar
+                newSearch={this.newSearch}
+              ></SearchBar>
+            </div>
+          </div>
+        </nav>
         <Pagination
           pageChange={this.pageChange}
           page={this.state.page}
         ></Pagination>
         {this.state.movies}
+
+
+
+
+
+        {/* <nav>
+          <div className="nav-wrapper">
+            <div className="row">
+              <div className="col s1">
+                <a href="/" className="brand-logo">Logo</a>
+              </div>
+              <div className="col s2">
+                <SearchBar
+                  newSearch={this.newSearch}
+                ></SearchBar>
+              </div>
+              <div className="col s5">
+                <GenreMenu
+                  genreChange={this.genreChange}
+                  pageChange={this.pageChange}
+                ></GenreMenu>
+              </div>
+            </div>
+          </div>
+
+        </nav>
+
+
+
+       
+        {this.state.movies} */}
       </div>
     );
   }
