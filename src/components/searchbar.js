@@ -38,7 +38,7 @@ class SearchBar extends React.Component {
     return (
 
       <div>
-        <div className="col s4 m4 l3">
+        <div className="col s5 m4 l3">
           <div id="search-div" className="input-field">
             <input id="search-input" className="search browser-default" type="search" placeholder="search" onKeyPress={this.handleKeyPress} />
           </div>

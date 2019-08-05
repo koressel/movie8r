@@ -10,9 +10,6 @@
   padding: 0 0 0 4em;
 } */
 
-.logo {
-  color: 
-}
 
 #search-input {
   padding: 0.54em 0.65em;
@@ -36,4 +33,20 @@
 }
 #search-div {
   padding: .5em 0;
+}
+
+.movie {
+  overflow: hidden;
+}
+
+.movie img {
+  border-radius: 3px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1em;
+  transition: transform 275ms ease-out;
+}
+
+.movie img:hover {
+  transform: scale(1.059);
 }

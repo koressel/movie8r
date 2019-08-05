@@ -33,7 +33,7 @@ class Movie8r extends React.Component {
         let result = resultObj.results;
         let movies = result.map(movie => {
           return (
-            <div className="movie" key={movie.id}>
+            <div className="movie col s6 m3 l2" key={movie.id}>
               <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
             </div>
           );
@@ -54,11 +54,13 @@ class Movie8r extends React.Component {
           let _maxPage = resultObj.total_pages;
           if (this.state.page === _maxPage) {
             let nextPageBTN = document.querySelector('#forward-button');
-            nextPageBTN.disabled = true;
+            nextPageBTN.classList.add('disabled', 'btn');
+            // nextPageBTN.disabled = true;
           }
           else {
             let nextPageBTN = document.querySelector('#forward-button');
-            nextPageBTN.disabled = false;
+            nextPageBTN.classList.add('light-blue', 'btn');
+            // nextPageBTN.disabled = false;
           }
 
           //update movies
@@ -130,7 +132,7 @@ class Movie8r extends React.Component {
 
   genreChange(genreID) {
     let nextPageBTN = document.querySelector('#forward-button');
-    nextPageBTN.disabled = false;
+    nextPageBTN.classList.add('light-blue', 'btn');
     let searchText = document.querySelector('.search');
     searchText.placeholder = '';
 
@@ -190,11 +192,11 @@ class Movie8r extends React.Component {
     if (page === this.state.maxPage) {
       //disable forward button if only page of results
       let nextPageBTN = document.querySelector('#forward-button');
-      nextPageBTN.disabled = true;
+      nextPageBTN.classList.add('disabled', 'btn');
     }
     else {
       let nextPageBTN = document.querySelector('#forward-button');
-      nextPageBTN.disabled = false;
+      nextPageBTN.classList.add('light-blue', 'btn');
       let currentURL = this.state.currentURL;
       let _nextURL;
 
@@ -284,6 +286,7 @@ class Movie8r extends React.Component {
 
   render() {
     return (
+      // grey darken-4
       <div className="App grey darken-4">
 
 
@@ -311,7 +314,13 @@ class Movie8r extends React.Component {
           pageChange={this.pageChange}
           page={this.state.page}
         ></Pagination>
-        {this.state.movies}
+
+        <div className="row">
+          {this.state.movies}
+        </div>
+
+
+
 
 
 

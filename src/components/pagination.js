@@ -24,6 +24,7 @@ class Pagination extends React.Component {
       nextPage = page - 1;
     }
 
+    console.log(nextPage)
     this.props.pageChange(nextPage);
     pageElement.innerHTML = nextPage;
   }
@@ -31,10 +32,10 @@ class Pagination extends React.Component {
 
   render() {
     return (
-      <div id="pagination">
-        <button id="back-button" onClick={this.handlePageChange}>back icon</button>
+      <div id="pagination" className="white-text">
+        <a id="back-button" className="light-blue btn" href="#" onClick={this.handlePageChange}><i className="material-icons" >chevron_left</i></a>
         <p id="page">{this.props.page}</p>
-        <button id="forward-button" onClick={this.handlePageChange}>forward icon</button>
+        <a id="forward-button" className="light-blue btn" href="#" onClick={this.handlePageChange}><i className="material-icons" >chevron_right</i></a>
       </div>
     )
   }
