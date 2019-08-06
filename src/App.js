@@ -84,6 +84,9 @@ class Movie8r extends React.Component {
 
   newSearch(keywords) {
 
+    // set genre to default
+    let newReleaseOption = document.querySelector('#genre-menu').getElementsByTagName('option')[0];
+    newReleaseOption.selected = 'selected';
     let currentURL = this.state.currentURL;
 
     // change directory
@@ -137,7 +140,7 @@ class Movie8r extends React.Component {
     let nextPageI = document.querySelector('#forward-button i');
     nextPageI.classList.add('material-icons', 'white-text');
     let searchText = document.querySelector('.search');
-    searchText.placeholder = '';
+    searchText.placeholder = 'search';
 
     let currentURL = this.state.currentURL;
     let _nextURL;
@@ -165,20 +168,39 @@ class Movie8r extends React.Component {
       _nextURL = currentURL.substring(0, pstart) + '&page=1' + currentURL.substring(pstart);
     }
 
-    let start = _nextURL.search('&with_genres=');
-    if (start !== -1) {
-      // update genreID
-      start += 13;
-      let value = _nextURL.substring(start);
-      let end = value.indexOf('&');
-      end = start + end;
-      _nextURL = _nextURL.substring(0, start) + genreID + _nextURL.substring(end);
+    if (genreID === 0) {
+      let start = _nextURL.search('&with_genres=');
+      if (start !== -1) {
+        // update genreID
+        start += 13;
+        let value = _nextURL.substring(start);
+        let end = value.indexOf('&');
+        end = start + end;
+        _nextURL = _nextURL.substring(0, (start - 13)) + _nextURL.substring(end);
+      }
+      // add genreID
+      else {
+        start = _nextURL.search('/movie?');
+        start += 7;
+        _nextURL = _nextURL.substring(0, start) + _nextURL.substring(start);
+      }
     }
-    // add genreID
     else {
-      start = _nextURL.search('/movie?');
-      start += 7;
-      _nextURL = _nextURL.substring(0, start) + '&with_genres=' + genreID + _nextURL.substring(start);
+      let start = _nextURL.search('&with_genres=');
+      if (start !== -1) {
+        // update genreID
+        start += 13;
+        let value = _nextURL.substring(start);
+        let end = value.indexOf('&');
+        end = start + end;
+        _nextURL = _nextURL.substring(0, start) + genreID + _nextURL.substring(end);
+      }
+      // add genreID
+      else {
+        start = _nextURL.search('/movie?');
+        start += 7;
+        _nextURL = _nextURL.substring(0, start) + '&with_genres=' + genreID + _nextURL.substring(start);
+      }
     }
 
     // remove query
