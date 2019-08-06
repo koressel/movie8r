@@ -304,10 +304,10 @@ class Movie8r extends React.Component {
         <nav>
           <div className="nav-wrapper grey darken-3">
             <div className="row">
-              <div className="col s1 m4 l6">
+              <div className="col s1 m2 l4">
                 <a href="/" className="light-blue-text left"><i className="material-icons">graphic_eq</i></a>
               </div>
-              <div className="col s4 m3 l2">
+              <div className="col s4 m4 l3">
                 <div id="genre-select" className="input-field">
                   <GenreMenu
                     genreChange={this.genreChange}
@@ -321,14 +321,15 @@ class Movie8r extends React.Component {
             </div>
           </div>
         </nav>
+
+        <div id="movie-container" className="row">
+          {this.state.movies}
+        </div>
+
         <Pagination
           pageChange={this.pageChange}
           page={this.state.page}
         ></Pagination>
-
-        <div className="row">
-          {this.state.movies}
-        </div>
 
 
 
