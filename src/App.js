@@ -67,7 +67,7 @@ class Movie8r extends React.Component {
           let result = resultObj.results;
           let movies = result.map(movie => {
             return (
-              <div className="movie" key={movie.id}>
+              <div className="movie col s6 m3 l2" key={movie.id}>
                 <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
               </div>
             );
@@ -132,7 +132,10 @@ class Movie8r extends React.Component {
 
   genreChange(genreID) {
     let nextPageBTN = document.querySelector('#forward-button');
-    nextPageBTN.classList.add('light-blue', 'btn');
+    nextPageBTN.classList.remove('disabled');
+    nextPageBTN.classList.add('grey', 'darken-4', 'btn');
+    let nextPageI = document.querySelector('#forward-button i');
+    nextPageI.classList.add('material-icons', 'white-text');
     let searchText = document.querySelector('.search');
     searchText.placeholder = '';
 
@@ -188,15 +191,23 @@ class Movie8r extends React.Component {
   }
 
   pageChange(page) {
+    console.log(page)
 
     if (page === this.state.maxPage) {
       //disable forward button if only page of results
+      let nextPageI = document.querySelector('#forward-button i');
+      nextPageI.classList.remove('white-text');
+      nextPageI.classList.add('grey-text', 'darken-2');
       let nextPageBTN = document.querySelector('#forward-button');
-      nextPageBTN.classList.add('disabled', 'btn');
+      nextPageBTN.classList.add('btn', 'disabled');
+      return;
     }
     else {
       let nextPageBTN = document.querySelector('#forward-button');
-      nextPageBTN.classList.add('light-blue', 'btn');
+      nextPageBTN.classList.remove('disabled');
+      nextPageBTN.classList.add('grey', 'darken-4', 'btn');
+      let nextPageI = document.querySelector('#forward-button i');
+      nextPageI.classList.add('material-icons', 'white-text');
       let currentURL = this.state.currentURL;
       let _nextURL;
 
