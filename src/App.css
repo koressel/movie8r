@@ -41,10 +41,19 @@
   margin-top: -.75em;
 }
 }
-/* .nav-wrapper ul,li {
-  margin: 0;
-  padding: 0;
-} */
+@media only screen and (min-width: 993px) {
+#search-button {
+  padding: .4em 1em ;
+  margin-top: -.55em;
+}
+}
+@media only screen and (min-width: 1200px) {
+#search-button {
+  padding: .42em 1em ;
+  margin-top: -.5em;
+}
+}
+
 #search-button i {
   padding: 0;
   margin: 0;
