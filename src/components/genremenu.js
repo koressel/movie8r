@@ -79,7 +79,7 @@ class GenreMenu extends React.Component {
       <select id="genre-menu" className="browser-default" onChange={this.handleChange}>
         <option value="" disabled hidden>Genre</option>
         <optgroup>
-          <option style={{ "font-weight": "bold" }}>New Release</option>
+          <option style={{ "fontWeight": "bold" }}>New Release</option>
         </optgroup>
         <optgroup>
           <option>Action</option>

@@ -13,7 +13,7 @@ class Movie8r extends React.Component {
       APIKEY: '5dee9b99bfc124fbabfa815c9bb193ba',
       baseURL: 'https://api.themoviedb.org/3/',
       movies: [],
-      currentURL: 'https://api.themoviedb.org/3/discover/movie?&with_genres=28&api_key=5dee9b99bfc124fbabfa815c9bb193ba',
+      currentURL: 'https://api.themoviedb.org/3/discover/movie?&api_key=5dee9b99bfc124fbabfa815c9bb193ba',
       nextURL: '',
       page: 1,
       maxPage: 1
@@ -23,6 +23,7 @@ class Movie8r extends React.Component {
     this.newSearch = this.newSearch.bind(this);
     this.genreChange = this.genreChange.bind(this);
     this.pageChange = this.pageChange.bind(this);
+    this.handleImgError = this.handleImgError.bind(this);
   }
 
   componentDidMount() {
@@ -66,12 +67,28 @@ class Movie8r extends React.Component {
           //update movies
           let result = resultObj.results;
           let movies = result.map(movie => {
+            // console.log(movie.poster_path)
+            // if (movie.poster_path !== null) {
+            //   return (
+            //     <div className="movie col s6 m3 l2" key={movie.id}>
+            //       <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
+            //     </div>
+            //   );
+            // }
+            // else {
+            //   console.log('movie returned null')
+            //   return (
+            //     <div key={movie.id} className="hidden-div"></div>
+            //   )
+            // }
             return (
               <div className="movie col s6 m3 l2" key={movie.id}>
                 <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
               </div>
             );
           });
+
+          console.log(this.state.nextURL)
 
           this.setState({
             movies: movies,
@@ -129,6 +146,7 @@ class Movie8r extends React.Component {
       gend = gstart + gend;
       _nextURL = _nextURL.substring(0, gstart - 1) + _nextURL.substring(gend);
     }
+
 
     this.setState({ nextURL: encodeURI(_nextURL), page: 1 });
   }
@@ -315,6 +333,10 @@ class Movie8r extends React.Component {
     }
 
     return id;
+  }
+
+  handleImgError(error) {
+    console.log(error)
   }
 
   render() {
