@@ -75,34 +75,38 @@ class GenreMenu extends React.Component {
   }
 
   render() {
-    return (
-      <select id="genre-menu" className="browser-default" onChange={this.handleChange}>
-        <option value="" disabled hidden>Genre</option>
-        <optgroup>
-          <option style={{ "fontWeight": "bold" }}>New Release</option>
-        </optgroup>
-        <optgroup>
-          <option>Action</option>
-          <option>Adventure</option>
-          <option>Animation</option>
-          <option>Comedy</option>
-          <option>Crime</option>
-          <option>Documentary</option>
-          <option>Drama</option>
-          <option>Family</option>
-          <option>Fantasy</option>
-          <option>History</option>
-          <option>Horror</option>
-          <option>Music</option>
-          <option>Mystery</option>
-          <option>Romance</option>
-          <option>Science Fiction</option>
-          <option>Thriller</option>
-          <option>War</option>
-          <option>Western</option>
-        </optgroup>
 
-      </select >
+    return (
+      <ul id="genre-container" className="menu">
+        <li>
+          <select id="genre-menu" className="browser-default" onChange={this.handleChange}>
+            <option value="" disabled hidden>Genre</option>
+            <optgroup>
+              <option style={{ "fontWeight": "bold" }}>New Release</option>
+            </optgroup>
+            <optgroup>
+              <option>Action</option>
+              <option>Adventure</option>
+              <option>Animation</option>
+              <option>Comedy</option>
+              <option>Crime</option>
+              <option>Documentary</option>
+              <option>Drama</option>
+              <option>Family</option>
+              <option>Fantasy</option>
+              <option>History</option>
+              <option>Horror</option>
+              <option>Music</option>
+              <option>Mystery</option>
+              <option>Romance</option>
+              <option>Science Fiction</option>
+              <option>Thriller</option>
+              <option>War</option>
+              <option>Western</option>
+            </optgroup>
+          </select >
+        </li>
+      </ul>
     )
   }
 }

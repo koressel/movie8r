@@ -34,7 +34,7 @@ class Movie8r extends React.Component {
         let result = resultObj.results;
         let movies = result.map(movie => {
           return (
-            <div className="movie col s6 m3 l2" key={movie.id}>
+            <div className="movie cell small-4 medium-3 large-2" key={movie.id}>
               <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
             </div>
           );
@@ -55,15 +55,10 @@ class Movie8r extends React.Component {
           let _maxPage = resultObj.total_pages;
           if (this.state.page === _maxPage) {
             let nextPageI = document.querySelector('#forward-button i');
-            nextPageI.classList.remove('white-text');
-            nextPageI.classList.add('grey-text', 'darken-3');
-            let nextPageBTN = document.querySelector('#forward-button');
-            nextPageBTN.classList.add('btn', 'disabled', 'grey', 'darken-3');
-            // nextPageBTN.disabled = true;
+            nextPageI.classList.add('grey-text');
           }
           else {
-            let nextPageBTN = document.querySelector('#forward-button');
-            nextPageBTN.classList.add('grey', 'darken-3', 'waves-effect', 'waves-light', 'btn');
+            // nextPageBTN.classList.add('grey', 'darken-3', 'waves-effect', 'waves-light', 'btn');
             // nextPageBTN.disabled = false;
           }
 
@@ -141,11 +136,8 @@ class Movie8r extends React.Component {
   }
 
   genreChange(genreID) {
-    let nextPageBTN = document.querySelector('#forward-button');
-    nextPageBTN.classList.remove('disabled');
-    nextPageBTN.classList.add('grey', 'darken-4', 'btn');
     let nextPageI = document.querySelector('#forward-button i');
-    nextPageI.classList.add('material-icons', 'white-text');
+    nextPageI.classList.add('white-text');
     let searchText = document.querySelector('.search');
     searchText.placeholder = 'search';
 
@@ -226,17 +218,13 @@ class Movie8r extends React.Component {
       //disable forward button if only page of results
       let nextPageI = document.querySelector('#forward-button i');
       nextPageI.classList.remove('white-text');
-      nextPageI.classList.add('grey-text', 'darken-3');
-      let nextPageBTN = document.querySelector('#forward-button');
-      nextPageBTN.classList.add('btn', 'disabled', 'grey', 'darken-3');
+      nextPageI.classList.add('grey-text', 'disabled');
       return;
     }
     else {
-      let nextPageBTN = document.querySelector('#forward-button');
-      nextPageBTN.classList.remove('disabled');
-      nextPageBTN.classList.add('grey', 'darken-3', 'btn');
-      let nextPageI = document.querySelector('#forward-button i');
-      nextPageI.classList.add('material-icons', 'white-text');
+
+      // let nextPageI = document.querySelector('#forward-button i');
+      // nextPageI.classList.add('material-icons', 'white-text');
       let currentURL = this.state.currentURL;
       let _nextURL;
 
@@ -330,10 +318,35 @@ class Movie8r extends React.Component {
 
   render() {
     return (
-      // grey darken-4
-      <div className="App grey darken-4">
+      <div className="App">
+        <div id="nav-bar">
+          <div className="grid-x">
+            <div className="cell small-2 medium-5 large-7">
+              <a href="/" id="logo">Movie8r</a>
+            </div>
+            <div className="cell small-7 medium-4 large-3">
+              <SearchBar
+                newSearch={this.newSearch}
+              ></SearchBar>
+              {/* <ul className="menu">
+                <li><input id="search" type="search" placeholder="search" /></li>
+                <li><button type="button" className="button"><i className="fi-magnifying-glass"></i></button></li>
+              </ul> */}
+            </div>
+            <div className="cell small-5 medium-3 large-offset-0 large-2">
+              <GenreMenu
+                genreChange={this.genreChange}
+                pageChange={this.pageChange}
+              ></GenreMenu>
+            </div>
+          </div>
+        </div>
 
-
+        <Pagination
+          pageChange={this.pageChange}
+          page={this.state.page}
+        ></Pagination>
+        {/* 
         <nav>
           <div className="nav-wrapper grey darken-3">
             <div className="row">
@@ -353,16 +366,16 @@ class Movie8r extends React.Component {
               ></SearchBar>
             </div>
           </div>
-        </nav>
+        </nav> */}
 
-        <div id="movie-container" className="row">
-          {this.state.movies}
+        <div className="grid-container fluid">
+          <div id="movie-container" className="grid-x grid-margin-x">
+            {this.state.movies}
+          </div>
         </div>
 
-        <Pagination
-          pageChange={this.pageChange}
-          page={this.state.page}
-        ></Pagination>
+
+
 
 
 

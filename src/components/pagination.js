@@ -31,14 +31,10 @@ class Pagination extends React.Component {
 
   render() {
     return (
-      <div className="container ">
-        <div className="row" style={{ padding: 0, margin: 0 }}>
-          <div id="pagination" className="col s12 center-align white-text">
-            <a id="back-button" className="grey darken-3 waves-effect waves-light btn" href="#" onClick={this.handlePageChange}><i className="material-icons" >chevron_left</i></a>
-            <p id="page">{this.props.page}</p>
-            <a id="forward-button" className="grey darken-3 waves-effect waves-light btn" href="#" onClick={this.handlePageChange}><i className="material-icons" >chevron_right</i></a>
-          </div>
-        </div>
+      <div id="pagination" className="text-center">
+        <a id="back-button" href="#" onClick={this.handlePageChange}><i className="fi-arrow-left"></i></a>
+        <p id="page">{this.props.page}</p>
+        <a id="forward-button" href="#" onClick={this.handlePageChange}><i className="fi-arrow-right"></i></a>
       </div>
 
     )

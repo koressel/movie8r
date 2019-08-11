@@ -1,13 +1,81 @@
+.grey-text {
+  color: #424242;
+}
+.white-text {
+  color: white;
+}
 
+.disabled {
+  pointer-events: none;
+}
 
 .App {
   padding-bottom: 3em;
+  background: #212121;
+}
+
+#logo {
+  color: white;
+  font-size: 19pt;
+  font-family: 'Kaushan Script', cursive;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.74);
+  /* margin: .25em auto;
+  display: block;
+  text-align: center;*/
+} 
+
+
+
+
+
+
+.button {
+  background: #03a9f4;
+  margin: 0;
+}
+
+div#nav-bar {
+  background: #424242;
+  padding: .4em 1em;
+}
+div#nav-bar #search-input {
+  margin: 0;
+  width: 11em;
+}
+
+
+@media screen and (min-width: 641px) {
+  div#nav-bar #search-input {
+  margin: 0;
+  width: 13em;
+}
+div#nav-bar #search-container {
+  width: 100%;
+}
+div#nav-bar #search-input {
+  margin: 0;
+  width: 100%;
+}
+#search-container li:nth-child(1) {
+  width: 80%
+}
+} 
+div#nav-bar #genre-container li {
+  margin: 0;
+  width: 100%;
+}
+div#nav-bar input {
+  margin: 0;
+}
+div#nav-bar ul {
+  background: #424242;
 }
 
 
 
 #pagination {
   margin-top: .5em;
+  color: white;
 }
 #pagination p,button {
   display: inline;
@@ -18,13 +86,13 @@
   font-size: 27pt;
 }
 
-#pagination .btn {
-  margin-top: -1.5em;
+#pagination a {
+  color: white;
 }
 
 #pagination i {
   display: inline;
-  font-size: 15pt;
+  font-size: 20pt;
 }
 
 #pagination .btn i {pointer-events: none; transition: color .3s ease-out;}
@@ -37,48 +105,22 @@
 } */
 
 
-#search-input {
-  padding: 0.5945em 0.68em;
-  width: 100%;
-  border-radius: 2px;
+
+
+/* #search-container {
+  margin-left: 1em;
 }
 
 
 
-#search-button-container {
-  margin: 0;
-  padding: 0;
-}
+@media screen and (min-width: 641) {
+  #search-container {
+    margin-right: 0;
+  }
+} */
 
-#search-button {
-  height: 100%;
-  width: 100%;
-  padding: .2385em 1em ;
-  margin-top: -.2em;
-}
 
-@media only screen and (min-width: 601px) {
-#search-button {
-  margin-top: -.75em;
-}
-}
-@media only screen and (min-width: 993px) {
-#search-button {
-  padding: .4em 1em ;
-  margin-top: -.55em;
-}
-}
-@media only screen and (min-width: 1200px) {
-#search-button {
-  padding: .42em 1em ;
-  margin-top: -.5em;
-}
-}
 
-#search-button i {
-  padding: 0;
-  margin: 0;
-}
 
 #genre-select {
   padding: .5em 0;
@@ -91,6 +133,7 @@
 
 .movie {
   overflow: hidden;
+  margin: 0 .5em;
 }
 
 #movie-container {
