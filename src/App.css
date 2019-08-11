@@ -11,11 +11,11 @@
 }
 #pagination p,button {
   display: inline;
-  margin: 0 1em;
+  margin: 0 .8em;
 }
 #pagination p {
   display: inline;
-  font-size: 30pt;
+  font-size: 27pt;
 }
 
 #pagination .btn {
@@ -24,8 +24,7 @@
 
 #pagination i {
   display: inline;
-  font-size: 30pt;
-  font-weight: bolder;
+  font-size: 15pt;
 }
 
 #pagination .btn i {pointer-events: none; transition: color .3s ease-out;}

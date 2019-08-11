@@ -54,33 +54,22 @@ class Movie8r extends React.Component {
 
           let _maxPage = resultObj.total_pages;
           if (this.state.page === _maxPage) {
+            let nextPageI = document.querySelector('#forward-button i');
+            nextPageI.classList.remove('white-text');
+            nextPageI.classList.add('grey-text', 'darken-3');
             let nextPageBTN = document.querySelector('#forward-button');
-            nextPageBTN.classList.add('disabled', 'btn');
+            nextPageBTN.classList.add('btn', 'disabled', 'grey', 'darken-3');
             // nextPageBTN.disabled = true;
           }
           else {
             let nextPageBTN = document.querySelector('#forward-button');
-            nextPageBTN.classList.add('light-blue', 'btn');
+            nextPageBTN.classList.add('grey', 'darken-3', 'waves-effect', 'waves-light', 'btn');
             // nextPageBTN.disabled = false;
           }
 
           //update movies
           let result = resultObj.results;
           let movies = result.map(movie => {
-            // console.log(movie.poster_path)
-            // if (movie.poster_path !== null) {
-            //   return (
-            //     <div className="movie col s6 m3 l2" key={movie.id}>
-            //       <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
-            //     </div>
-            //   );
-            // }
-            // else {
-            //   console.log('movie returned null')
-            //   return (
-            //     <div key={movie.id} className="hidden-div"></div>
-            //   )
-            // }
             return (
               <div className="movie col s6 m3 l2" key={movie.id}>
                 <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
@@ -237,15 +226,15 @@ class Movie8r extends React.Component {
       //disable forward button if only page of results
       let nextPageI = document.querySelector('#forward-button i');
       nextPageI.classList.remove('white-text');
-      nextPageI.classList.add('grey-text', 'darken-2');
+      nextPageI.classList.add('grey-text', 'darken-3');
       let nextPageBTN = document.querySelector('#forward-button');
-      nextPageBTN.classList.add('btn', 'disabled');
+      nextPageBTN.classList.add('btn', 'disabled', 'grey', 'darken-3');
       return;
     }
     else {
       let nextPageBTN = document.querySelector('#forward-button');
       nextPageBTN.classList.remove('disabled');
-      nextPageBTN.classList.add('grey', 'darken-4', 'btn');
+      nextPageBTN.classList.add('grey', 'darken-3', 'btn');
       let nextPageI = document.querySelector('#forward-button i');
       nextPageI.classList.add('material-icons', 'white-text');
       let currentURL = this.state.currentURL;
