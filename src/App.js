@@ -55,11 +55,12 @@ class Movie8r extends React.Component {
       fetch(this.state.nextURL)
         .then(res => res.json())
         .then(resultObj => {
-
           let _maxPage = resultObj.total_pages;
           if (this.state.page === _maxPage) {
             let nextPageI = document.querySelector('#forward-button i');
             nextPageI.classList.add('grey-text');
+            let nextPageA = document.querySelector('#forward-button');
+            nextPageA.classList.add('disabled');
           }
           else {
             // nextPageBTN.classList.add('grey', 'darken-3', 'waves-effect', 'waves-light', 'btn');
@@ -216,13 +217,13 @@ class Movie8r extends React.Component {
   }
 
   pageChange(page) {
-    console.log(page)
 
     if (page === this.state.maxPage) {
       //disable forward button if only page of results
       let nextPageI = document.querySelector('#forward-button i');
       nextPageI.classList.remove('white-text');
-      nextPageI.classList.add('grey-text', 'disabled');
+      let nextPageA = document.querySelector('#forward-button');
+      nextPageA.classList.add('disabled');
       return;
     }
     else {
@@ -324,31 +325,6 @@ class Movie8r extends React.Component {
     return (
       <div className="App">
 
-        {/* <div className="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
-          <div className="title-bar-left">Movie8r</div>
-          <div className="tite-bar-right">
-            <button className="menu-icon " type="button" data-toggle="example-menu"></button>
-          </div>
-        </div>
-
-        <div className="top-bar grid-x" id="example-menu">
-          <div className="cell small-1">
-            <a href="#">movie8r</a>
-          </div>
-          <div className="cell small-2">
-            <ul className="menu">
-              <li><input type="search" placeholder="Search" />
-                <button type="button" className="button">Search</button></li>
-            </ul>
-          </div>
-          <div className="cell small-2">
-            <select>
-              <option>hello</option>
-              <option>hello</option>
-            </select>
-          </div>
-        </div> */}
-
 
         <div className="title-bar" data-responsive-toggle="mobile-menu" data-hide-for="medium">
           <div className="title-bar-left">
@@ -377,6 +353,11 @@ class Movie8r extends React.Component {
           </div>
         </div>
 
+        <Pagination
+          pageChange={this.pageChange}
+          page={this.state.page}
+        ></Pagination>
+
 
 
         <div className="grid-container fluid">
@@ -384,10 +365,7 @@ class Movie8r extends React.Component {
             {this.state.movies}
           </div>
         </div>
-        <Pagination
-          pageChange={this.pageChange}
-          page={this.state.page}
-        ></Pagination>
+
       </div>
     );
   }

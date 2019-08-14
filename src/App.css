@@ -132,9 +132,10 @@ html {
 #pagination i {
   display: inline;
   font-size: 20pt;
+  pointer-events: none;
+  transition: color .3s ease-out;
 }
 
-#pagination .btn i {pointer-events: none; transition: color .3s ease-out;}
 #pagination .btn:hover i {
   color: #03a9f4;
 }
