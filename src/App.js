@@ -26,7 +26,11 @@ class Movie8r extends React.Component {
     this.handleImgError = this.handleImgError.bind(this);
   }
 
+
   componentDidMount() {
+    const $ = window.$;
+    $(document).foundation();
+
     fetch(this.state.currentURL)
       .then(res => res.json())
       .then(resultObj => {
@@ -66,7 +70,7 @@ class Movie8r extends React.Component {
           let result = resultObj.results;
           let movies = result.map(movie => {
             return (
-              <div className="movie col s6 m3 l2" key={movie.id}>
+              <div className="movie cell small-4 medium-3 large-2" key={movie.id}>
                 <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
               </div>
             );
@@ -319,97 +323,71 @@ class Movie8r extends React.Component {
   render() {
     return (
       <div className="App">
-        <div id="nav-bar">
-          <div className="grid-x">
-            <div className="cell small-2 medium-5 large-7">
-              <a href="/" id="logo">Movie8r</a>
-            </div>
-            <div className="cell small-7 medium-4 large-3">
-              <SearchBar
-                newSearch={this.newSearch}
-              ></SearchBar>
-              {/* <ul className="menu">
-                <li><input id="search" type="search" placeholder="search" /></li>
-                <li><button type="button" className="button"><i className="fi-magnifying-glass"></i></button></li>
-              </ul> */}
-            </div>
-            <div className="cell small-5 medium-3 large-offset-0 large-2">
-              <GenreMenu
-                genreChange={this.genreChange}
-                pageChange={this.pageChange}
-              ></GenreMenu>
-            </div>
+
+        {/* <div className="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+          <div className="title-bar-left">Movie8r</div>
+          <div className="tite-bar-right">
+            <button className="menu-icon " type="button" data-toggle="example-menu"></button>
           </div>
         </div>
 
-        <Pagination
-          pageChange={this.pageChange}
-          page={this.state.page}
-        ></Pagination>
-        {/* 
-        <nav>
-          <div className="nav-wrapper grey darken-3">
-            <div className="row">
-              <div className="col s1 m2 l4">
-                <a href="/" className="light-blue-text left"><i className="material-icons">graphic_eq</i></a>
-              </div>
-              <div className="col s4 m4 l3">
-                <div id="genre-select" className="input-field">
-                  <GenreMenu
-                    genreChange={this.genreChange}
-                    pageChange={this.pageChange}
-                  ></GenreMenu>
-                </div>
-              </div>
-              <SearchBar
-                newSearch={this.newSearch}
-              ></SearchBar>
-            </div>
+        <div className="top-bar grid-x" id="example-menu">
+          <div className="cell small-1">
+            <a href="#">movie8r</a>
           </div>
-        </nav> */}
+          <div className="cell small-2">
+            <ul className="menu">
+              <li><input type="search" placeholder="Search" />
+                <button type="button" className="button">Search</button></li>
+            </ul>
+          </div>
+          <div className="cell small-2">
+            <select>
+              <option>hello</option>
+              <option>hello</option>
+            </select>
+          </div>
+        </div> */}
+
+
+        <div className="title-bar" data-responsive-toggle="mobile-menu" data-hide-for="medium">
+          <div className="title-bar-left">
+            <a href="/" id="logo">Movie8r</a>
+          </div>
+          <div className="title-bar-right">
+            <button className="menu-icon" type="button" data-toggle="mobile-menu"></button>
+          </div>
+        </div>
+
+
+        <div className="top-bar grid-x" id="mobile-menu">
+          <div className="cell small-1 medium-4 large-6 show-for-medium">
+            <a href="/" id="logo">Movie8r</a>
+          </div>
+          <div className="cell small-5 medium-4 large-3">
+            <SearchBar
+              newSearch={this.newSearch}
+            ></SearchBar>
+          </div>
+          <div className="cell small-5 medium-3 large-2">
+            <GenreMenu
+              genreChange={this.genreChange}
+              pageChange={this.pageChange}
+            ></GenreMenu>
+          </div>
+        </div>
+
+
 
         <div className="grid-container fluid">
           <div id="movie-container" className="grid-x grid-margin-x">
             {this.state.movies}
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-        {/* <nav>
-          <div className="nav-wrapper">
-            <div className="row">
-              <div className="col s1">
-                <a href="/" className="brand-logo">Logo</a>
-              </div>
-              <div className="col s2">
-                <SearchBar
-                  newSearch={this.newSearch}
-                ></SearchBar>
-              </div>
-              <div className="col s5">
-                <GenreMenu
-                  genreChange={this.genreChange}
-                  pageChange={this.pageChange}
-                ></GenreMenu>
-              </div>
-            </div>
-          </div>
-
-        </nav>
-
-
-
-       
-        {this.state.movies} */}
+        <Pagination
+          pageChange={this.pageChange}
+          page={this.state.page}
+        ></Pagination>
       </div>
     );
   }

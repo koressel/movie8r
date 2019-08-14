@@ -36,10 +36,16 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <ul id="search-container" className="menu">
-        <li><input id="search-input" className="search browser-default" type="search" placeholder="search" onKeyPress={this.handleKeyPress} /></li>
-        <li><button type="button" id="search-button" className=" button" onClick={this.handleSearchButtonClick}><i className="fi-magnifying-glass"></i></button></li>
-      </ul>
+      <div id="search-container" className="grid-x">
+        <div className="cell small-10">
+          <input id="search-input" className="search " type="search" placeholder="search" onKeyPress={this.handleKeyPress} />
+
+        </div>
+        <div className="cell small-2">
+          <button type="button" id="search-button" className=" button" onClick={this.handleSearchButtonClick}><i className="fi-magnifying-glass"></i></button>
+
+        </div>
+      </div>
     );
   }
 }
