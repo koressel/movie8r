@@ -375,18 +375,16 @@ class Movie8r extends React.Component {
           </div>
         </div>
 
-        <Pagination
-          pageChange={this.pageChange}
-          page={this.state.page}
-        ></Pagination>
-
-
-
         <div className="grid-container fluid">
           <div id="movie-container" className="grid-x grid-margin-x">
             {this.state.movies}
           </div>
         </div>
+
+        <Pagination
+          pageChange={this.pageChange}
+          page={this.state.page}
+        ></Pagination>
 
       </div>
     );
