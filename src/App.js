@@ -34,6 +34,13 @@ class Movie8r extends React.Component {
     fetch(this.state.currentURL)
       .then(res => res.json())
       .then(resultObj => {
+        if (this.state.page === 1) {
+          let lastPageI = document.querySelector('#back-button i');
+          lastPageI.classList.remove('white-text');
+          lastPageI.classList.add('grey-text');
+          let lastPageA = document.querySelector('#back-button');
+          lastPageA.classList.add('disabled');
+        }
         let maxPage = resultObj.total_pages;
         let result = resultObj.results;
         let movies = result.map(movie => {
@@ -49,22 +56,34 @@ class Movie8r extends React.Component {
   }
 
   componentDidUpdate() {
-    // console.log('updated')
-
+    console.log(this.state.page)
     if (this.state.nextURL !== this.state.currentURL) {
       fetch(this.state.nextURL)
         .then(res => res.json())
         .then(resultObj => {
+
           let _maxPage = resultObj.total_pages;
           if (this.state.page === _maxPage) {
             let nextPageI = document.querySelector('#forward-button i');
+            nextPageI.classList.remove('white-text');
             nextPageI.classList.add('grey-text');
             let nextPageA = document.querySelector('#forward-button');
             nextPageA.classList.add('disabled');
           }
+
+          if (this.state.page === 1) {
+            let lastPageI = document.querySelector('#back-button i');
+            lastPageI.classList.remove('white-text');
+            lastPageI.classList.add('grey-text');
+            let lastPageA = document.querySelector('#back-button');
+            lastPageA.classList.add('disabled');
+          }
           else {
-            // nextPageBTN.classList.add('grey', 'darken-3', 'waves-effect', 'waves-light', 'btn');
-            // nextPageBTN.disabled = false;
+            let lastPageI = document.querySelector('#back-button i');
+            lastPageI.classList.remove('grey-text');
+            lastPageI.classList.add('white-text');
+            let lastPageA = document.querySelector('#back-button');
+            lastPageA.classList.remove('disabled');
           }
 
           //update movies
@@ -222,14 +241,17 @@ class Movie8r extends React.Component {
       //disable forward button if only page of results
       let nextPageI = document.querySelector('#forward-button i');
       nextPageI.classList.remove('white-text');
+      nextPageI.classList.add('grey-text');
       let nextPageA = document.querySelector('#forward-button');
       nextPageA.classList.add('disabled');
       return;
     }
     else {
-
-      // let nextPageI = document.querySelector('#forward-button i');
-      // nextPageI.classList.add('material-icons', 'white-text');
+      let nextPageI = document.querySelector('#forward-button i');
+      nextPageI.classList.remove('grey-text');
+      nextPageI.classList.add('white-text');
+      let nextPageA = document.querySelector('#forward-button');
+      nextPageA.classList.remove('disabled');
       let currentURL = this.state.currentURL;
       let _nextURL;
 
