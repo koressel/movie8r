@@ -2,6 +2,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background: #212121;
+}
+
 #pagination button {
    background: none!important;
   border: none;

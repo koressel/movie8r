@@ -61,7 +61,6 @@ class Movie8r extends React.Component {
       fetch(this.state.nextURL)
         .then(res => res.json())
         .then(resultObj => {
-          console.log(resultObj)
           let _maxPage = resultObj.total_pages;
           if (this.state.page === _maxPage) {
             let nextPageI = document.querySelector('#forward-button i');
