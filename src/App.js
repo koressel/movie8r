@@ -56,12 +56,10 @@ class Movie8r extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state.page)
     if (this.state.nextURL !== this.state.currentURL) {
       fetch(this.state.nextURL)
         .then(res => res.json())
         .then(resultObj => {
-
           let _maxPage = resultObj.total_pages;
           if (this.state.page === _maxPage) {
             let nextPageI = document.querySelector('#forward-button i');
@@ -95,8 +93,6 @@ class Movie8r extends React.Component {
               </div>
             );
           });
-
-          console.log(this.state.nextURL)
 
           this.setState({
             movies: movies,
