@@ -20,6 +20,7 @@ class Movie8r extends React.Component {
 
     };
 
+    this.handleMovieClick = this.handleMovieClick.bind(this);
     this.newSearch = this.newSearch.bind(this);
     this.genreChange = this.genreChange.bind(this);
     this.pageChange = this.pageChange.bind(this);
@@ -46,7 +47,7 @@ class Movie8r extends React.Component {
         let movies = result.map(movie => {
           return (
             <div className="movie cell small-4 medium-3 large-2" key={movie.id}>
-              <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
+              <img onClick={this.handleMovieClick} src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} id={movie.original_title} alt={movie.original_title} />
             </div>
           );
         });
@@ -89,7 +90,7 @@ class Movie8r extends React.Component {
           let movies = result.map(movie => {
             return (
               <div className="movie cell small-4 medium-3 large-2" key={movie.id}>
-                <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.original_title} />
+                <img onClick={this.handleMovieClick} src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} id={movie.original_title} alt={movie.original_title} />
               </div>
             );
           });
@@ -101,6 +102,19 @@ class Movie8r extends React.Component {
           });
         });
     }
+  }
+
+  // this is where the magic happens
+  handleMovieClick(e) {
+    // let streamingSites = [
+
+    // ];
+    let title = e.target.id;
+    title = title.toLowerCase();
+    title = title.replace(/:/g, "");
+    title = title.replace(/ /g, "-");
+
+    window.location.href = `https://bmovie.cc/movies/${title}/`;
   }
 
   newSearch(keywords) {
