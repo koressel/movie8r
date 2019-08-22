@@ -119,6 +119,11 @@ class Movie8r extends React.Component {
 
   newSearch(keywords) {
 
+    let nextPageI = document.querySelector('#forward-button i');
+    nextPageI.classList.add('white-text');
+    let nextPageA = document.querySelector('#forward-button');
+    nextPageA.classList.remove('disabled');
+
     // set genre to default
     let newReleaseOption = document.querySelector('#genre-menu').getElementsByTagName('option')[0];
     newReleaseOption.selected = 'selected';

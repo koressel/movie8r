@@ -1,6 +1,14 @@
 html {
   scroll-behavior: smooth;
 }
+
+#pagination button {
+   background: none!important;
+  border: none;
+  padding: 0!important;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .grey-text {
   color: #424242;
 }
