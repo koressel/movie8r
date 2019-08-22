@@ -82,8 +82,16 @@ body {
   padding: .4em 1em;
 }
 
-
-
+@media screen and (max-width: 39.9375em) {
+  #mobile-menu .cell {
+    margin-bottom: .5em;
+  }
+  .top-bar #search-button {
+  vertical-align: top;
+  padding: .63em 1.25em;
+  max-width: 100%;
+}
+}
 
 
 .top-bar #search-container {

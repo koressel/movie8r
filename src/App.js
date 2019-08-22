@@ -4,6 +4,7 @@ import SearchBar from './components/searchbar';
 import GenreMenu from './components/genremenu';
 import Pagination from './components/pagination';
 
+
 class Movie8r extends React.Component {
 
   constructor(props) {
@@ -104,11 +105,7 @@ class Movie8r extends React.Component {
     }
   }
 
-  // this is where the magic happens
   handleMovieClick(e) {
-    // let streamingSites = [
-
-    // ];
     let title = e.target.id;
     title = title.toLowerCase();
     title = title.replace(/:/g, "");
@@ -361,7 +358,6 @@ class Movie8r extends React.Component {
     return (
       <div className="App">
 
-
         <div className="title-bar" data-responsive-toggle="mobile-menu" data-hide-for="medium">
           <div className="title-bar-left">
             <a href="/" id="logo">Movie8r</a>
@@ -372,16 +368,16 @@ class Movie8r extends React.Component {
         </div>
 
 
-        <div className="top-bar grid-x" id="mobile-menu">
+        <div className="top-bar grid-x" id="mobile-menu" data-animate="hinge-in-from-top hinge-out-from-top">
           <div className="cell small-1 medium-4 large-6 show-for-medium">
             <a href="/" id="logo">Movie8r</a>
           </div>
-          <div className="cell small-5 medium-4 large-3">
+          <div className="cell small-12 medium-4 large-3">
             <SearchBar
               newSearch={this.newSearch}
             ></SearchBar>
           </div>
-          <div className="cell small-5 medium-3 large-2">
+          <div className="cell small-12 medium-3 large-2">
             <GenreMenu
               genreChange={this.genreChange}
               pageChange={this.pageChange}
