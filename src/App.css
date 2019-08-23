@@ -4,6 +4,7 @@ html {
 
 body {
   background: #212121;
+  position: relative;
 }
 
 #pagination button {
@@ -26,7 +27,8 @@ body {
 
 
 .App {
-  padding-bottom: 3em;
+  padding: 0;
+  margin: 0;
   background: #212121;
 }
 
@@ -68,18 +70,20 @@ body {
 
 
 
-
-
-
-
 .button {
   background: #03a9f4;
   margin: 0;
 }
 
+/* === .top-bar === */
 .top-bar {
   background: #424242;
   padding: .4em 1em;
+   top: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  transition: top 0.3s;
 }
 
 @media screen and (max-width: 39.9375em) {
@@ -90,9 +94,8 @@ body {
   vertical-align: top;
   padding: .63em 1.25em;
   max-width: 100%;
+  }
 }
-}
-
 
 .top-bar #search-container {
   width: 100%;
@@ -132,6 +135,10 @@ body {
 
 
 
+
+
+
+
 #pagination {
   margin-top: .5em;
   color: white;
@@ -160,26 +167,6 @@ body {
   color: #03a9f4;
 }
 
-/* #search {
-  padding: 0 0 0 4em;
-} */
-
-
-
-
-/* #search-container {
-  margin-left: 1em;
-}
-
-
-
-@media screen and (min-width: 641) {
-  #search-container {
-    margin-right: 0;
-  }
-} */
-
-
 
 
 #genre-select {
@@ -197,7 +184,7 @@ body {
 }
 
 #movie-container {
-  margin-top: 1.5em;
+  margin-top: 4.5em;
 }
 
 .movie img {
@@ -210,4 +197,18 @@ body {
 
 .movie img:hover {
   transform: scale(1.059);
+}
+
+/* === footer === */
+footer {
+  background: #424242;
+  color: rgb(206, 206, 206);
+  height: 52px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
 }

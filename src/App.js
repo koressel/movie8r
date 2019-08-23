@@ -396,6 +396,10 @@ class Movie8r extends React.Component {
           page={this.state.page}
         ></Pagination>
 
+        <footer>
+          <p>Disclaimer: This site contains external links to third party websites. Your use of these websites is solely at your own risk.</p>
+        </footer>
+
       </div>
     );
   }
