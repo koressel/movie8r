@@ -25,7 +25,6 @@ class Movie8r extends React.Component {
     this.newSearch = this.newSearch.bind(this);
     this.genreChange = this.genreChange.bind(this);
     this.pageChange = this.pageChange.bind(this);
-    this.handleImgError = this.handleImgError.bind(this);
   }
 
 
@@ -258,6 +257,8 @@ class Movie8r extends React.Component {
       return;
     }
     else {
+      window.scrollTo(0, 0);
+
       let nextPageI = document.querySelector('#forward-button i');
       nextPageI.classList.remove('grey-text');
       nextPageI.classList.add('white-text');
@@ -350,10 +351,6 @@ class Movie8r extends React.Component {
     return id;
   }
 
-  handleImgError(error) {
-    console.log(error)
-  }
-
   render() {
     return (
       <div className="App">
@@ -396,9 +393,9 @@ class Movie8r extends React.Component {
           page={this.state.page}
         ></Pagination>
 
-        <footer>
+        {/* <footer>
           <p>Disclaimer: This site contains external links to third party websites. Your use of these websites is solely at your own risk.</p>
-        </footer>
+        </footer> */}
 
       </div>
     );
