@@ -33,11 +33,11 @@ body {
 }
 
 .App .title-bar {
-  background: #424242;
+  background: #0d47a1 ;
 }
 
 .App .top-bar {
-  background: #424242;
+  background: #0d47a1 ;
 }
 
 .title-bar button:focus{
@@ -71,7 +71,7 @@ body {
 
 
 .button {
-  background: #03a9f4;
+  background:#2979ff;
   margin: 0;
 }
 

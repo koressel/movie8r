@@ -6,7 +6,7 @@
       if (prevScrollPos > currentScrollPos) {
         document.getElementById("mobile-menu").style.top = "0";
       } else {
-        document.getElementById("mobile-menu").style.top = "-50px";
+        document.getElementById("mobile-menu").style.top = "-52px";
       }
     }
     prevScrollPos = currentScrollPos;
