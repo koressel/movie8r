@@ -355,7 +355,7 @@ class Movie8r extends React.Component {
     return (
       <div className="App">
 
-        <div className="title-bar" data-responsive-toggle="mobile-menu" data-hide-for="medium">
+        <div className="title-bar title-bar-show" data-responsive-toggle="mobile-menu" data-hide-for="medium">
           <div className="title-bar-left">
             <a href="/" id="logo">Movie8r</a>
           </div>
@@ -365,7 +365,7 @@ class Movie8r extends React.Component {
         </div>
 
 
-        <div className="top-bar grid-x" id="mobile-menu" data-animate="hinge-in-from-top hinge-out-from-top">
+        <div className="top-bar top-bar-show grid-x" id="mobile-menu" data-animate="hinge-in-from-top hinge-out-from-top">
           <div className="cell small-1 medium-4 large-6 show-for-medium">
             <a href="/" id="logo">Movie8r</a>
           </div>

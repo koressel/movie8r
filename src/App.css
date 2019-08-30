@@ -32,12 +32,20 @@ body {
   background: #212121;
 }
 
-.App .title-bar {
+.title-bar {
+  padding: .4em 1em;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  transition: top 0.3s;
   background: #0d47a1;
 }
 
-.App .top-bar {
-  background: #0d47a1;
+.title-bar-show {
+  top: 0;
+}
+.title-bar-hide {
+  top: -52px;
 }
 
 .title-bar button:focus{
@@ -77,13 +85,26 @@ body {
 
 /* === .top-bar === */
 .top-bar {
-  background: #424242;
   padding: .4em 1em;
-   top: 0;
+  
   width: 100%;
   position: fixed;
   z-index: 1;
   transition: top 0.3s;
+  background: #0d47a1;
+}
+
+.top-bar-show {
+  top: 0;
+}
+.top-bar-hide {
+  top: -52px;
+}
+.top-bar-mobile-show {
+  top: 3.1em;
+}
+.top-bar-mobile-hide {
+  top: -125px;
 }
 
 @media screen and (max-width: 39.9375em) {
