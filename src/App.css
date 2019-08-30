@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background: #212121;
+  background: #1c2429;
   position: relative;
 }
 
@@ -29,7 +29,7 @@ body {
 .App {
   padding: 0 0 2em 0;
   margin: 0;
-  background: #212121;
+  background: #1c2429;
 }
 
 .title-bar {
@@ -38,7 +38,7 @@ body {
   position: fixed;
   z-index: 1;
   transition: top 0.3s;
-  background: #0d47a1;
+  background: #263238;
 }
 
 .title-bar-show {
@@ -66,24 +66,6 @@ body {
   }
 }
 
-#logo {
-  color: white;
-  font-size: 19pt;
-  font-family: 'Kaushan Script', cursive;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.74);
-   /* margin: .25em auto;
-  display: block;
-  text-align: center; */
-} 
-
-
-
-.button {
-  background:#2979ff;
-  margin: 0;
-}
-
-/* === .top-bar === */
 .top-bar {
   padding: .4em 1em;
   
@@ -91,7 +73,8 @@ body {
   position: fixed;
   z-index: 1;
   transition: top 0.3s;
-  background: #0d47a1;
+  background: #0288d1;
+  /* background: #005786;  interesting*/
 }
 
 .top-bar-show {
@@ -116,6 +99,23 @@ body {
   padding: .63em 1.25em;
   max-width: 100%;
   }
+}
+
+#logo {
+  color: white;
+  font-size: 19pt;
+  font-family: 'Kaushan Script', cursive;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.74);
+   /* margin: .25em auto;
+  display: block;
+  text-align: center; */
+} 
+
+
+
+.button {
+  background:#2978ff00;
+  margin: 0;
 }
 
 .top-bar #search-container {
