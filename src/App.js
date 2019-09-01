@@ -13,7 +13,8 @@ class Movie8r extends React.Component {
     this.state = {
       APIKEY: '5dee9b99bfc124fbabfa815c9bb193ba',
       baseURL: 'https://api.themoviedb.org/3/',
-      movies: [],
+      popularPosterElements: [],
+      movieElements: [],
       currentURL: 'https://api.themoviedb.org/3/discover/movie?&api_key=5dee9b99bfc124fbabfa815c9bb193ba',
       nextURL: '',
       page: 1,
@@ -44,7 +45,29 @@ class Movie8r extends React.Component {
         }
         let maxPage = resultObj.total_pages;
         let result = resultObj.results;
-        let movies = result.map(movie => {
+        let backdropID = 1;
+        let popularPosterElements = result.map(movie => {
+          if (backdropID === 1) {
+            return (
+              <li className="is-active orbit-slide" key={backdropID}>
+                <figure className="orbit-figure">
+                  <img className="orbit-image" src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="Space" />
+                </figure>
+              </li>
+            );
+          }
+          else {
+            return (
+              <li className="orbit-slide" key={backdropID}>
+                <figure className="orbit-figure">
+                  <img className="orbit-image" src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="Space" />
+                </figure>
+              </li>
+            );
+          }
+
+        });
+        let movieElements = result.map(movie => {
           return (
             <div className="movie cell small-4 medium-3 large-2" key={movie.id}>
               <img onClick={this.handleMovieClick} src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} id={movie.original_title} alt={movie.original_title} />
@@ -52,7 +75,7 @@ class Movie8r extends React.Component {
           );
         });
 
-        this.setState({ movies: movies, maxPage: maxPage });
+        this.setState({ movieElements: movieElements, maxPage: maxPage, popularPosterElements: popularPosterElements });
       });
   }
 
@@ -87,7 +110,7 @@ class Movie8r extends React.Component {
 
           //update movies
           let result = resultObj.results;
-          let movies = result.map(movie => {
+          let movieElements = result.map(movie => {
             return (
               <div className="movie cell small-4 medium-3 large-2" key={movie.id}>
                 <img onClick={this.handleMovieClick} src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} id={movie.original_title} alt={movie.original_title} />
@@ -96,7 +119,7 @@ class Movie8r extends React.Component {
           });
 
           this.setState({
-            movies: movies,
+            movieElements: movieElements,
             currentURL: this.state.nextURL,
             maxPage: _maxPage
           });
@@ -382,9 +405,78 @@ class Movie8r extends React.Component {
           </div>
         </div>
 
+
+        {/* <div id="carousel-container" className="grid-container fluid">
+          <div className="grid-x">
+            <div className="cell large-12">
+              <div className="orbit" role="region" aria-label="Movie Posters" data-orbit>
+                <div className="orbit-wrapper">
+                  <div className="orbit-controls">
+                    <button className="orbit-previous"><span className="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+                    <button className="orbit-next"><span className="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                  </div>
+                  <ul id="orbit" className="orbit-container">
+
+                    {this.state.popularPosterElements}
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> */}
+
+        <div className="grid-container">
+          <div className="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+            <div className="orbit-wrapper">
+              <div className="orbit-controls">
+                <button className="orbit-previous"><span className="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+                <button className="orbit-next"><span className="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+              </div>
+              <ul className="orbit-container">
+                <li className="is-active orbit-slide">
+                  <figure className="orbit-figure">
+                    <img className="orbit-image" src="https://image.tmdb.org/t/p/original/8bRIfPGDnmWgdy65LO8xtdcFmFP.jpg" alt="Space" />
+                    <figcaption className="orbit-caption">Space, the final frontier.</figcaption>
+                  </figure>
+                </li>
+                <li className="orbit-slide">
+                  <figure className="orbit-figure">
+                    <img className="orbit-image" src="https://image.tmdb.org/t/p/original/8bRIfPGDnmWgdy65LO8xtdcFmFP.jpg" alt="Space" />
+                    <figcaption className="orbit-caption">Lets Rocket!</figcaption>
+                  </figure>
+                </li>
+                <li className="orbit-slide">
+                  <figure className="orbit-figure">
+                    <img className="orbit-image" src="https://image.tmdb.org/t/p/original/8bRIfPGDnmWgdy65LO8xtdcFmFP.jpg" alt="Space" />
+                    <figcaption className="orbit-caption">Encapsulating</figcaption>
+                  </figure>
+                </li>
+                <li className="orbit-slide">
+                  <figure className="orbit-figure">
+                    <img className="orbit-image" src="https://image.tmdb.org/t/p/original/8bRIfPGDnmWgdy65LO8xtdcFmFP.jpg" alt="Space" />
+                    <figcaption className="orbit-caption">Outta This World</figcaption>
+                  </figure>
+                </li>
+              </ul>
+            </div>
+            <nav className="orbit-bullets">
+              <button className="is-active" data-slide="0">
+                <span className="show-for-sr">First slide details.</span>
+                <span className="show-for-sr" data-slide-active-label>Current Slide</span>
+              </button>
+              <button data-slide="1"><span className="show-for-sr">Second slide details.</span></button>
+              <button data-slide="2"><span className="show-for-sr">Third slide details.</span></button>
+              <button data-slide="3"><span className="show-for-sr">Fourth slide details.</span></button>
+            </nav>
+          </div>
+        </div>
+
+
+
         <div className="grid-container fluid">
           <div id="movie-container" className="grid-x grid-margin-x">
-            {this.state.movies}
+            {this.state.movieElements}
           </div>
         </div>
 

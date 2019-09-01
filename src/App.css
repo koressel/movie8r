@@ -73,7 +73,7 @@ body {
   position: fixed;
   z-index: 1;
   transition: top 0.3s;
-  background: #0288d1;
+  background: #263238;
   /* background: #005786;  interesting*/
 }
 
@@ -155,6 +155,13 @@ body {
 }
 
 
+#carousel-container {
+  padding: 0;
+  margin: 0;
+}
+.orbit {
+ margin: 5em 0 0 0;
+}
 
 
 
