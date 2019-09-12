@@ -43,6 +43,7 @@ body {
 
 .title-bar-show {
   top: 0;
+  
 }
 .title-bar-hide {
   top: -52px;
@@ -135,6 +136,7 @@ body {
 .top-bar #search-button {
   vertical-align: top;
   padding: .63em 1.25em;
+  background: #8bb900c0;
 }
 .top-bar #search-button i {
   font-size: 14pt;
