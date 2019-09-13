@@ -388,7 +388,7 @@ class Movie8r extends React.Component {
         </div>
 
 
-        <div className="top-bar top-bar-show grid-x" id="mobile-menu" data-animate="hinge-in-from-top hinge-out-from-top">
+        <div className="top-bar grid-x" id="mobile-menu" data-animate="hinge-in-from-top hinge-out-from-top">
           <div className="cell small-1 medium-4 large-6 show-for-medium">
             <a href="/" id="logo">Movie8r</a>
           </div>
