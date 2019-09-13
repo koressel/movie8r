@@ -7,7 +7,7 @@
     let topBar = document.querySelector(".top-bar");
     let currentScrollPos = window.pageYOffset;
 
-    if (window.innerWidth <= 640) {
+    if (window.innerWidth <= 640) { // small window
       if (currentScrollPos >= 24) {
         if (prevScrollPos < currentScrollPos) {
           titleBar.style.top = '-3.7em';
@@ -20,56 +20,28 @@
       }
       prevScrollPos = currentScrollPos;
     }
-    else {
-
+    else { // medium and large window
+      if (currentScrollPos >= 24) {
+        if (prevScrollPos < currentScrollPos) {
+          topBar.style.top = '-4em';
+        }
+        else {
+          topBar.style.top = '0px';
+        }
+      }
+      prevScrollPos = currentScrollPos;
     }
-
-
-
-    // if (window.innerWidth >= 640) {
-    //   topBar.classList.remove('top-bar-mobile-show');
-    //   topBar.classList.remove('top-bar-mobile-hide');
-    //   if (currentScrollPos >= 24) {
-    //     if (prevScrollPos > currentScrollPos) {
-    //       topBar.classList.remove('top-bar-hide');
-    //       topBar.classList.add('top-bar-show');
-    //     } else {
-    //       topBar.classList.remove('top-bar-show');
-    //       topBar.classList.add('top-bar-hide');
-    //     }
-    //   }
-    //   prevScrollPos = currentScrollPos;
-    // }
-    // else {
-    //   if (topBar.classList.contains('top-bar-show')) {
-    //     topBar.classList.remove('top-bar-show');
-
-    //   }
-    //   else {
-    //     topBar.classList.remove('top-bar-hide');
-
-    //   }
-    //   if (currentScrollPos >= 24) {
-    //     if (prevScrollPos > currentScrollPos) {
-    //       titleBar.classList.remove('title-bar-hide');
-    //       titleBar.classList.add('title-bar-show');
-
-    //       topBar.classList.remove('top-bar-mobile-hide');
-    //       topBar.classList.add('top-bar-mobile-show');
-    //     } else {
-    //       titleBar.classList.remove('title-bar-show');
-    //       titleBar.classList.add('title-bar-hide');
-
-    //       topBar.classList.remove('top-bar-mobile-show');
-    //       topBar.classList.add('top-bar-mobile-hide');
-    //     }
-    //   }
-    //   prevScrollPos = currentScrollPos;
-    // }
-
   };
 
-
+  window.onresize = function () {
+    let topBar = document.querySelector(".top-bar");
+    if (window.innerWidth >= 640) {
+      topBar.style.top = '0px';
+    }
+    else {
+      topBar.style.top = '3.1em';
+    }
+  };
 
 
 })();
