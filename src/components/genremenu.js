@@ -83,8 +83,6 @@ class GenreMenu extends React.Component {
             <option value="" disabled hidden>Genre</option>
             <optgroup>
               <option style={{ "fontWeight": "bold" }}>New Release</option>
-            </optgroup>
-            <optgroup>
               <option>Action</option>
               <option>Adventure</option>
               <option>Animation</option>
@@ -104,7 +102,7 @@ class GenreMenu extends React.Component {
               <option>War</option>
               <option>Western</option>
             </optgroup>
-          </select >
+          </select>
         </li>
       </ul>
     )

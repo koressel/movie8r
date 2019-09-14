@@ -50,7 +50,7 @@ body {
   width: 100%;
   position: fixed;
   z-index: 1;
-  transition: top 0.3s;
+  transition: top 0.4s;
   background: #212121;
 }
 
@@ -85,7 +85,7 @@ body {
   width: 100%;
   position: fixed;
   z-index: 1;
-  transition: top 0.3s;
+  transition: top 0.4s;
   background: #212121;
   /* background: #005786;  interesting*/
 }
@@ -136,7 +136,11 @@ body {
 }
 .top-bar #search-input {
   margin: 0;
-  width: 100%;
+  width: 80%;
+
+  background: #424242;
+  border: 1px #424242;
+  color: #fff;
 }
 .top-bar input {
   max-width: 100%;
@@ -148,7 +152,8 @@ body {
 .top-bar #search-button {
   vertical-align: top;
   padding: .63em 1.25em;
-  background: #d32f2f;
+   background: #424242;
+  color: #fff;
 }
 .top-bar #search-button i {
   font-size: 14pt;
@@ -157,10 +162,31 @@ body {
   width: 100%
 }
  
+
+
 .top-bar #genre-container li {
   margin: 0;
   width: 100%;
+  font-family: Arial;
 }
+#genre-container select {
+  background: #424242;
+  border: none;
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .top-bar input {
   margin: 0;
 }
@@ -234,7 +260,7 @@ body {
   width: 100%;
   height: auto;
   margin-bottom: 1em;
-  transition: transform 275ms ease-out;
+  transition: transform .5s ease-out;
 }
 
 .movie img:hover {
