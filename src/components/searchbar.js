@@ -41,17 +41,9 @@ class SearchBar extends React.Component {
           <input id="search-input" className="search " type="search" placeholder="search" onKeyPress={this.handleKeyPress} />
           <button type="button" id="search-button" className=" button" onClick={this.handleSearchButtonClick}><i className="fi-magnifying-glass"></i></button>
         </div>
-
       </div>
     );
   }
 }
 
 export default SearchBar;
-
-/* <div id="search-bar">
-  <input id="search-text" onKeyPress={this.handleKeyPress} type="text" placehoder="search" />
-  <button onClick={this.handleSearchButtonClick}>
-    <i className="material-icons">search</i>
-  </button>
-</div> */

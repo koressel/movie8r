@@ -136,27 +136,28 @@ body {
 }
 .top-bar #search-input {
   margin: 0;
-  width: 80%;
-
+  width: 75%;
   background: #424242;
-  border: 1px #424242;
-  color: #fff;
+  border: none;
 }
 .top-bar input {
-  max-width: 100%;
+  max-width: 70%;
 }
 .top-bar #search-input,#search-button {
   display: inline;
 }
+#search-button i {
+  font-size: 1.3em;
+  padding: 0;
+  margin: 0;
+}
 
 .top-bar #search-button {
   vertical-align: top;
-  padding: .63em 1.25em;
-   background: #424242;
-  color: #fff;
-}
-.top-bar #search-button i {
-  font-size: 14pt;
+  height: 0.85em 1em;
+  background: #76ff03;
+  border: none;
+  color: #000;
 }
 #search-container li {
   width: 100%

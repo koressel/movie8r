@@ -3,6 +3,8 @@ import './App.css';
 import SearchBar from './components/searchbar';
 import GenreMenu from './components/genremenu';
 import Pagination from './components/pagination';
+import Install from './components/install';
+import ColorMode from './components/colormode';
 
 
 class Movie8r extends React.Component {
@@ -389,42 +391,38 @@ class Movie8r extends React.Component {
 
 
         <div className="top-bar grid-x" id="mobile-menu" data-animate="hinge-in-from-top hinge-out-from-top">
-          <div className="cell small-1 medium-4 large-6 show-for-medium">
+
+
+          <div className="cell small-1 medium-4 large-2 show-for-medium">
             <a href="/" id="logo">Movie8r</a>
           </div>
+
           <div className="cell small-12 medium-4 large-3">
             <SearchBar
               newSearch={this.newSearch}
             ></SearchBar>
           </div>
+
           <div className="cell small-12 medium-3 large-2">
             <GenreMenu
               genreChange={this.genreChange}
               pageChange={this.pageChange}
             ></GenreMenu>
           </div>
+
+          <div className="cel small-12 medium-1 large-2">
+            <Install></Install>
+          </div>
+
+          <div className="cel small-12 medium-1 large-2">
+            <ColorMode></ColorMode>
+          </div>
+
+
         </div>
 
 
-        {/* <div id="carousel-container" className="grid-container fluid">
-          <div className="grid-x">
-            <div className="cell large-12">
-              <div className="orbit" role="region" aria-label="Movie Posters" data-orbit>
-                <div className="orbit-wrapper">
-                  <div className="orbit-controls">
-                    <button className="orbit-previous"><span className="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-                    <button className="orbit-next"><span className="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-                  </div>
-                  <ul id="orbit" className="orbit-container">
 
-                    {this.state.popularPosterElements}
-
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
 
 
         <div className="grid-container fluid">
@@ -432,16 +430,10 @@ class Movie8r extends React.Component {
             {this.state.movieElements}
           </div>
         </div>
-
         <Pagination
           pageChange={this.pageChange}
           page={this.state.page}
         ></Pagination>
-
-        {/* <footer>
-          <p>Disclaimer: This site contains external links to third party websites. Your use of these websites is solely at your own risk.</p>
-        </footer> */}
-
       </div>
     );
   }
