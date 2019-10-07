@@ -10,11 +10,7 @@ class ColorMode extends React.Component {
 
   render() {
     return (
-
-      <div>
-        <button><i className="fi-contrast"></i></button>
-      </div>
-
+        <button id="color-mode"><i className="fi-contrast"></i></button>
     );
   }
 }

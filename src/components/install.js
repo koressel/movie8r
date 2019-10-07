@@ -15,7 +15,7 @@ class Install extends React.Component {
 
 
       <div>
-        <a href="#" class="button round">Round Button</a>
+        <button id="install" class="button round">Install</button>
       </div>
 
 
