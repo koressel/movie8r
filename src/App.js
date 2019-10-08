@@ -427,6 +427,26 @@ class Movie8r extends React.Component {
         </div>
 
 
+        <div className="grid-container">
+          <div className="grid-x">
+            <div className="cell small-10 small-offset-1">
+              <div id="install-callout" class="callout primary">
+                <div className="grid-x">
+                  <div className="cell small-12">
+
+                    <p>Movie8r is a <a href="https://developers.google.com/web/progressive-web-apps">Progressive Web App</a> and can be installed on desktop and mobile devices. Try it out!</p>
+
+                  </div>
+                  <div className="cell small-12">
+                    <button id="install-button" className="button">Install</button>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -439,6 +459,7 @@ class Movie8r extends React.Component {
           pageChange={this.pageChange}
           page={this.state.page}
         ></Pagination>
+
       </div>
     );
   }
