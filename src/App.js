@@ -393,30 +393,36 @@ class Movie8r extends React.Component {
         <div className="top-bar grid-x" id="mobile-menu" data-animate="hinge-in-from-top hinge-out-from-top">
 
 
-          <div className="cell small-1 medium-2  large-2 show-for-medium">
+          <div className="cell small-1 medium-4 large-5 show-for-medium">
             <a href="/" id="logo">Movie8r</a>
           </div>
 
-          <div className="cell small-12 medium-4 large-4">
+
+
+          <div className="cell small-12 medium-5 large-5">
             <SearchBar
               newSearch={this.newSearch}
             ></SearchBar>
           </div>
 
-          <div className="cell small-12 medium-3 large-3">
+          <div className="cell small-12 medium-3 large-2">
             <GenreMenu
               genreChange={this.genreChange}
               pageChange={this.pageChange}
             ></GenreMenu>
           </div>
 
+
+
+
+          {/* 
           <div className="cel small-12 medium-1 large-1">
             <Install></Install>
-          </div>
+          </div> */}
 
-          <div className="cel small-12 medium-1 large-1">
+          {/* <div className="cel small-12 medium-1 large-1">
             <ColorMode></ColorMode>
-          </div>
+          </div> */}
 
         </div>
 
