@@ -136,7 +136,6 @@ body {
   width: 10%;
   max-width: 20%;
   padding: 0.85em 0;
-
 }
 #search-container li {
   width: 100%
@@ -295,21 +294,31 @@ footer p {
   }
 
   .no-js .title-bar {
-    display: none;
+    display: none;    
   }
 
-    .top-bar #search-input {
-  max-width: 78%;
-}
+  .top-bar #search-input {
+    max-width: 75%;
+    min-width: 50%;
+  }
+  .top-bar #search-button {
+    width: 15%;
+    max-width: 15%;
+  }
 }
 /* Large and up */
 @media screen and (min-width: 64em) {
  .top-bar {
     top: 0;
   }
-  .top-bar #search-input {
-  max-width: 81%;
-}
+   .top-bar #search-input {
+    max-width: 82%;
+    min-width: 50%;
+  }
+  .top-bar #search-button {
+    width: 15%;
+    max-width: 10%;
+  }
 }
 
 
