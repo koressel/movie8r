@@ -3,8 +3,6 @@ import './App.css';
 import SearchBar from './components/searchbar';
 import GenreMenu from './components/genremenu';
 import Pagination from './components/pagination';
-import Install from './components/install';
-import ColorMode from './components/colormode';
 
 
 class Movie8r extends React.Component {
@@ -412,25 +410,13 @@ class Movie8r extends React.Component {
             ></GenreMenu>
           </div>
 
-
-
-
-          {/* 
-          <div className="cel small-12 medium-1 large-1">
-            <Install></Install>
-          </div> */}
-
-          {/* <div className="cel small-12 medium-1 large-1">
-            <ColorMode></ColorMode>
-          </div> */}
-
         </div>
 
 
         <div className="grid-container">
           <div className="grid-x">
             <div className="cell small-10 small-offset-1">
-              <div id="install-callout" class="callout primary">
+              <div id="install-callout" className="callout primary">
                 <div className="grid-x">
                   <div className="cell small-12">
 
