@@ -32,9 +32,9 @@ class Pagination extends React.Component {
   render() {
     return (
       <div id="pagination" className="text-center">
-        <button id="back-button" onClick={this.handlePageChange}><i className="fi-arrow-left white-text"></i></button>
+        <button id="back-button" aria-label="page-back-button" onClick={this.handlePageChange}><i className="fi-arrow-left white-text"></i></button>
         <p id="page">{this.props.page}</p>
-        <button id="forward-button" onClick={this.handlePageChange}><i className="fi-arrow-right white-text"></i></button>
+        <button id="forward-button" aria-label="page-forward-button" onClick={this.handlePageChange}><i className="fi-arrow-right white-text"></i></button>
       </div>
 
     )

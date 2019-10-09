@@ -383,7 +383,7 @@ class Movie8r extends React.Component {
             <a href="/" id="logo">Movie8r</a>
           </div>
           <div className="title-bar-right">
-            <button className="menu-icon" type="button" data-toggle="mobile-menu"></button>
+            <button className="menu-icon" aria-label="menu-dropdown-icon" type="button" data-toggle="mobile-menu"></button>
           </div>
         </div>
 
@@ -412,39 +412,41 @@ class Movie8r extends React.Component {
 
         </div>
 
+        <main>
+          <div className="grid-container">
+            <div className="grid-x">
+              <div className="cell small-10 small-offset-1">
+                <div id="install-callout" className="callout primary">
+                  <div className="grid-x">
+                    <div className="cell small-12">
 
-        <div className="grid-container">
-          <div className="grid-x">
-            <div className="cell small-10 small-offset-1">
-              <div id="install-callout" className="callout primary">
-                <div className="grid-x">
-                  <div className="cell small-12">
+                      <p>Movie8r is a <a href="https://developers.google.com/web/progressive-web-apps">Progressive Web App</a> and can be installed on desktop and mobile devices. Try it out!</p>
 
-                    <p>Movie8r is a <a href="https://developers.google.com/web/progressive-web-apps">Progressive Web App</a> and can be installed on desktop and mobile devices. Try it out!</p>
-
+                    </div>
+                    <div className="cell small-12">
+                      <button id="install-button" className="button">Install</button>
+                    </div>
                   </div>
-                  <div className="cell small-12">
-                    <button id="install-button" className="button">Install</button>
-                  </div>
+
+
                 </div>
-
-
               </div>
             </div>
           </div>
-        </div>
 
 
 
-        <div className="grid-container fluid">
-          <div id="movie-container" className="grid-x grid-margin-x">
-            {this.state.movieElements}
+          <div className="grid-container fluid">
+            <div id="movie-container" className="grid-x grid-margin-x">
+              {this.state.movieElements}
+            </div>
           </div>
-        </div>
-        <Pagination
-          pageChange={this.pageChange}
-          page={this.state.page}
-        ></Pagination>
+          <Pagination
+            pageChange={this.pageChange}
+            page={this.state.page}
+          ></Pagination>
+        </main>
+
 
       </div>
     );

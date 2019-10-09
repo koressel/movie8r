@@ -116,6 +116,11 @@ body {
   background: #424242;
   border: none;
   height: 42.96px;
+  color: #FFF;
+}
+
+.top-bar #search-input:focus-within {
+  box-shadow: none;
 }
 
 .top-bar #search-input,#search-button {
@@ -196,7 +201,7 @@ body {
   text-align: left;
 } */
 #install-callout a {
-  color:#296fbe;
+  color:#427dc0;
 }
 
 #install-button {
