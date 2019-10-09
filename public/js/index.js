@@ -50,7 +50,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   // Stash the event so it can be triggered later.
   deferredPrompt = e;
-  console.log("beforeinstallprompt fired");
   installbutton = document.getElementById("install-button");
   installbutton.addEventListener('click', e => {
     deferredPrompt.prompt();

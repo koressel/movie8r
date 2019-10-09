@@ -81,49 +81,51 @@ class Movie8r extends React.Component {
 
   componentDidUpdate() {
     if (this.state.nextURL !== this.state.currentURL) {
-      fetch(this.state.nextURL)
-        .then(res => res.json())
-        .then(resultObj => {
-          let _maxPage = resultObj.total_pages;
-          if (this.state.page === _maxPage) {
-            let nextPageI = document.querySelector('#forward-button i');
-            nextPageI.classList.remove('white-text');
-            nextPageI.classList.add('grey-text');
-            let nextPageA = document.querySelector('#forward-button');
-            nextPageA.classList.add('disabled');
-          }
+      if (this.state.nextURL !== '') {
+        fetch(this.state.nextURL)
+          .then(res => res.json())
+          .then(resultObj => {
+            let _maxPage = resultObj.total_pages;
+            if (this.state.page === _maxPage) {
+              let nextPageI = document.querySelector('#forward-button i');
+              nextPageI.classList.remove('white-text');
+              nextPageI.classList.add('grey-text');
+              let nextPageA = document.querySelector('#forward-button');
+              nextPageA.classList.add('disabled');
+            }
 
-          if (this.state.page === 1) {
-            let lastPageI = document.querySelector('#back-button i');
-            lastPageI.classList.remove('white-text');
-            lastPageI.classList.add('grey-text');
-            let lastPageA = document.querySelector('#back-button');
-            lastPageA.classList.add('disabled');
-          }
-          else {
-            let lastPageI = document.querySelector('#back-button i');
-            lastPageI.classList.remove('grey-text');
-            lastPageI.classList.add('white-text');
-            let lastPageA = document.querySelector('#back-button');
-            lastPageA.classList.remove('disabled');
-          }
+            if (this.state.page === 1) {
+              let lastPageI = document.querySelector('#back-button i');
+              lastPageI.classList.remove('white-text');
+              lastPageI.classList.add('grey-text');
+              let lastPageA = document.querySelector('#back-button');
+              lastPageA.classList.add('disabled');
+            }
+            else {
+              let lastPageI = document.querySelector('#back-button i');
+              lastPageI.classList.remove('grey-text');
+              lastPageI.classList.add('white-text');
+              let lastPageA = document.querySelector('#back-button');
+              lastPageA.classList.remove('disabled');
+            }
 
-          //update movies
-          let result = resultObj.results;
-          let movieElements = result.map(movie => {
-            return (
-              <div className="movie cell small-4 medium-3 large-2" key={movie.id}>
-                <img onClick={this.handleMovieClick} src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} id={movie.original_title} alt={movie.original_title} />
-              </div>
-            );
+            //update movies
+            let result = resultObj.results;
+            let movieElements = result.map(movie => {
+              return (
+                <div className="movie cell small-4 medium-3 large-2" key={movie.id}>
+                  <img onClick={this.handleMovieClick} src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} id={movie.original_title} alt={movie.original_title} />
+                </div>
+              );
+            });
+
+            this.setState({
+              movieElements: movieElements,
+              currentURL: this.state.nextURL,
+              maxPage: _maxPage
+            });
           });
-
-          this.setState({
-            movieElements: movieElements,
-            currentURL: this.state.nextURL,
-            maxPage: _maxPage
-          });
-        });
+      }
     }
   }
 
