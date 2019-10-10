@@ -158,11 +158,18 @@ body {
   width: 100%;
   font-family: Arial;
 }
+.top-bar #genre-container li:focus {
+  outline: none;
+}
+
 #genre-container select {
   background: #424242;
   border: none;
   color: #fff;
   height: 42.96px;
+}
+#genre-container select:focus {
+ outline: none;
 }
 
 .top-bar #install {
