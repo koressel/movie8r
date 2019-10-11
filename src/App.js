@@ -385,7 +385,7 @@ class Movie8r extends React.Component {
             <a href="/" id="logo">Movie8r</a>
           </div>
           <div className="title-bar-right">
-            <button className="menu-icon" aria-label="menu-dropdown-icon" type="button" data-toggle="mobile-menu"></button>
+            <button className="menu-icon" type="button" data-toggle="mobile-menu"></button>
           </div>
         </div>
 

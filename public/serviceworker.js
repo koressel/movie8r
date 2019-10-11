@@ -1,6 +1,6 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('/sw.js').then(function (registration) {
+    navigator.serviceWorker.register('/serviceworker.js').then(function (registration) {
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, function (err) {
@@ -10,9 +10,13 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-var CACHE_NAME = 'my-site-cache-v1';
+var CACHE_NAME = 'movie8r-cache-v1';
 var urlsToCache = [
   '/',
+  'index.html',
+  'index.js',
+  'logo.png',
+  'manifest.json'
 ];
 
 self.addEventListener('install', function (event) {
@@ -28,7 +32,7 @@ self.addEventListener('install', function (event) {
 
 self.addEventListener('activate', function (event) {
 
-  var cacheWhitelist = ['my-site-cache-v1'];
+  var cacheWhitelist = ['movie8r-cache-v1'];
 
   event.waitUntil(
     caches.keys().then(function (cacheNames) {
