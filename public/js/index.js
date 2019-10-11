@@ -53,12 +53,13 @@ window.addEventListener('beforeinstallprompt', (e) => {
   installbutton = document.getElementById("install-button");
   installbutton.addEventListener('click', e => {
     deferredPrompt.prompt();
-    installButton.disabled = true;
+    // installbutton.disabled = true;
     // Wait for the user to respond to the prompt
     deferredPrompt.userChoice
       .then((choiceResult) => {
         if (choiceResult.outcome === 'accepted') {
           console.log('PWA setup accepted');
+          //hide the callout
         } else {
           console.log('PWA setup rejected');
         }
