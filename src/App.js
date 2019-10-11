@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import 'jquery';
+import './lib/foundation/foundation.min.css';
 import SearchBar from './components/searchbar';
 import GenreMenu from './components/genremenu';
 import Pagination from './components/pagination';
@@ -389,15 +391,10 @@ class Movie8r extends React.Component {
           </div>
         </div>
 
-
         <div className="top-bar grid-x" id="mobile-menu" data-animate="hinge-in-from-top hinge-out-from-top">
-
-
           <div className="cell small-1 medium-4 large-5 show-for-medium">
             <a href="/" id="logo">Movie8r</a>
           </div>
-
-
 
           <div className="cell small-12 medium-5 large-5">
             <SearchBar
