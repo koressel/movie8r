@@ -209,12 +209,26 @@ body {
 } */
 #install-callout a {
   color:#85beff;
+  /* text-decoration: underline; */
 }
 
 #install-button {
   background: #1565c0;
   color: #FFF;
   width: 8em;
+}
+
+#error-callout {
+  margin: 5em 0 0 0;
+  background: #424242;
+  color: #FFF;
+  display: none;
+}
+
+#error-callout #error-button {
+  background: #1565c0;
+  color: #FFF;
+  width: auto;
 }
 
 

@@ -113,6 +113,10 @@ class Movie8r extends React.Component {
 
             //update movies
             let result = resultObj.results;
+            let errorMsg = document.getElementById('error-callout');
+            if (result.length === 0) {
+              errorMsg.style.display = 'block';
+            }
             let movieElements = result.map(movie => {
               return (
                 <div className="movie cell small-4 medium-3 large-2" key={movie.id}>
@@ -131,13 +135,20 @@ class Movie8r extends React.Component {
     }
   }
 
+  // This function was originally designed to navigate directly to the video 
+  // player on the target site. However, these kind of websites are notoriously 
+  // flighty and change urls often so the url has been set to the homepage 
+  // of the target site. 
+
   handleMovieClick(e) {
     let title = e.target.id;
     title = title.toLowerCase();
     title = title.replace(/:/g, "");
     title = title.replace(/ /g, "-");
 
-    window.location.href = `https://bmovie.cc/movies/${title}/`;
+    // window.location.href = `https://bmovie.cc/movies/${title}/`;
+
+    window.location.href = `https://w1.123moviess.cc/`;
   }
 
   newSearch(keywords) {
@@ -418,22 +429,28 @@ class Movie8r extends React.Component {
                 <div id="install-callout" className="callout primary">
                   <div className="grid-x">
                     <div className="cell small-12">
-
                       <p>Movie8r is a <a href="https://developers.google.com/web/progressive-web-apps">Progressive Web App</a> and can be installed on desktop and mobile devices. Try it out!</p>
-
                     </div>
                     <div className="cell small-12">
                       <button id="install-button" className="button">Install</button>
                     </div>
                   </div>
-
-
                 </div>
               </div>
             </div>
           </div>
 
-
+          <div className="grid-container">
+            <div className="grid-x">
+              <div className="cell small-6 small-offset-3">
+                <div id="error-callout" className="callout primary">
+                  <h1>Whoops!</h1>
+                  <p>It looks like there's nothing here...</p>
+                  <button id="error-button" className="button">Back</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="grid-container fluid">
             <div id="movie-container" className="grid-x grid-margin-x">
