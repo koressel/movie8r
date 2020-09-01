@@ -127,6 +127,9 @@ class Movie8r extends React.Component {
     // window.location.href = `https://bmovie.cc/movies/${title}/`;
 
     window.location.href = `https://w1.123moviess.cc/`;
+
+    // Show info screen
+
   }
 
   newSearch(keywords) {
@@ -401,22 +404,6 @@ class Movie8r extends React.Component {
         </div>
 
         <main>
-          {/* <div className="grid-container">
-            <div className="grid-x">
-              <div className="cell small-10 small-offset-1">
-                <div id="install-callout" className="callout primary">
-                  <div className="grid-x">
-                    <div className="cell small-12">
-                      <p>Movie8r is a <a href="https://developers.google.com/web/progressive-web-apps">Progressive Web App</a> and can be installed on desktop and mobile devices. Try it out!</p>
-                    </div>
-                    <div className="cell small-12">
-                      <button id="install-button" className="button">Install</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
 
           <div className="grid-container">
             <div className="grid-x">
@@ -435,6 +422,11 @@ class Movie8r extends React.Component {
               {this.state.movieElements}
             </div>
           </div>
+
+          <div id="movie-info">
+            <h1>Author, score, etc...</h1>
+          </div>
+
           <Pagination
             pageChange={this.pageChange}
             page={this.state.page}
