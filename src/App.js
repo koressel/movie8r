@@ -423,7 +423,7 @@ class Movie8r extends React.Component {
         </div>
 
         <main>
-          <div className="grid-container">
+          {/* <div className="grid-container">
             <div className="grid-x">
               <div className="cell small-10 small-offset-1">
                 <div id="install-callout" className="callout primary">
@@ -438,7 +438,7 @@ class Movie8r extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="grid-container">
             <div className="grid-x">

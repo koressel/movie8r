@@ -1,3 +1,4 @@
+// resize the navbar to fit current window
 (function navbarInit() {
   let prevScrollPos = window.pageYOffset;
 
@@ -19,8 +20,8 @@
       }
       prevScrollPos = currentScrollPos;
     }
-    else { // medium and large window
-      if (currentScrollPos >= 24) {
+    else { 
+      if (currentScrollPos >= 24) { // medium and large window
         if (prevScrollPos < currentScrollPos) {
           topBar.style.top = '-4em';
         }
@@ -43,7 +44,7 @@
   };
 })();
 
-let deferredPrompt; // Allows to show the install prompt
+let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
   // Prevent Chrome 67 and earlier from automatically showing the prompt
