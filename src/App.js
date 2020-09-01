@@ -5,6 +5,7 @@ import './lib/foundation/foundation.min.css';
 import SearchBar from './components/searchbar';
 import GenreMenu from './components/genremenu';
 import Pagination from './components/pagination';
+import MovieInfo from './components/movieinfo';
 
 
 class Movie8r extends React.Component {
@@ -17,9 +18,10 @@ class Movie8r extends React.Component {
       baseURL: 'https://api.themoviedb.org/3/',
       movieElements: [],
       currentURL: 'https://api.themoviedb.org/3/discover/movie?&api_key=5dee9b99bfc124fbabfa815c9bb193ba',
+      movieId: 'default',
       nextURL: '',
       page: 1,
-      maxPage: 1
+      maxPage: 1,
 
     };
 
@@ -27,6 +29,7 @@ class Movie8r extends React.Component {
     this.newSearch = this.newSearch.bind(this);
     this.genreChange = this.genreChange.bind(this);
     this.pageChange = this.pageChange.bind(this);
+    this.backClicked = this.backClicked.bind(this);
   }
 
 
@@ -50,7 +53,7 @@ class Movie8r extends React.Component {
         let movieElements = result.map(movie => {
           return (
             <div className="movie cell small-4 medium-3 large-2" key={movie.id}>
-              <img onClick={this.handleMovieClick} src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} id={movie.original_title} alt={movie.original_title} />
+              <img onClick={this.handleMovieClick} src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} id={movie.id} alt={movie.original_title} />
             </div>
           );
         });
@@ -66,14 +69,8 @@ class Movie8r extends React.Component {
           .then(res => res.json())
           .then(resultObj => {
             let _maxPage = resultObj.total_pages;
-            if (this.state.page === _maxPage) {
-              let nextPageI = document.querySelector('#forward-button i');
-              nextPageI.classList.remove('white-text');
-              nextPageI.classList.add('grey-text');
-              let nextPageA = document.querySelector('#forward-button');
-              nextPageA.classList.add('disabled');
-            }
 
+            // update page buttons
             if (this.state.page === 1) {
               let lastPageI = document.querySelector('#back-button i');
               lastPageI.classList.remove('white-text');
@@ -89,6 +86,14 @@ class Movie8r extends React.Component {
               lastPageA.classList.remove('disabled');
             }
 
+            if (this.state.page === _maxPage) {
+              let nextPageI = document.querySelector('#forward-button i');
+              nextPageI.classList.remove('white-text');
+              nextPageI.classList.add('grey-text');
+              let nextPageA = document.querySelector('#forward-button');
+              nextPageA.classList.add('disabled');
+            }
+
             //update movies
             let result = resultObj.results;
             let errorMsg = document.getElementById('error-callout');
@@ -98,7 +103,7 @@ class Movie8r extends React.Component {
             let movieElements = result.map(movie => {
               return (
                 <div className="movie cell small-4 medium-3 large-2" key={movie.id}>
-                  <img onClick={this.handleMovieClick} src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} id={movie.original_title} alt={movie.original_title} />
+                  <img onClick={this.handleMovieClick} src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} id={movie.id} alt={movie.original_title} />
                 </div>
               );
             });
@@ -119,17 +124,25 @@ class Movie8r extends React.Component {
   // of the target site. 
 
   handleMovieClick(e) {
-    let title = e.target.id;
-    title = title.toLowerCase();
-    title = title.replace(/:/g, "");
-    title = title.replace(/ /g, "-");
+    let movies = document.querySelector('#movie-container');
+    let info = document.querySelector('#info-container');
+    let pagination = document.querySelector('#pagination');
+
+    let _movieId = e.target.id;
+    // title = title.toLowerCase();
+    // title = title.replace(/:/g, "");
+    // title = title.replace(/ /g, "-");
 
     // window.location.href = `https://bmovie.cc/movies/${title}/`;
 
-    window.location.href = `https://w1.123moviess.cc/`;
+    // window.location.href = `https://w1.123moviess.cc/`;
 
-    // Show info screen
+  
+    movies.classList = ('hide grid-x grid-margin-x');
+    pagination.classList = 'hide text-center';
+    info.classList = "";
 
+    this.setState({movieId: _movieId});
   }
 
   newSearch(keywords) {
@@ -370,6 +383,16 @@ class Movie8r extends React.Component {
     return id;
   }
 
+  backClicked(boolean) {
+    let movies = document.querySelector('#movie-container');
+    let info = document.querySelector('#info-container');
+    let pagination = document.querySelector('#pagination');
+
+    info.classList = "hide";
+    movies.classList = ('grid-x grid-margin-x');
+    pagination.classList = 'text-center';
+  }
+
   render() {
     return (
       <div className="App">
@@ -421,10 +444,12 @@ class Movie8r extends React.Component {
             <div id="movie-container" className="grid-x grid-margin-x">
               {this.state.movieElements}
             </div>
-          </div>
-
-          <div id="movie-info">
-            <h1>Author, score, etc...</h1>
+            <div id="info-container" className="hide">
+              <MovieInfo
+                backClicked={this.backClicked}
+                movieId={this.state.movieId}
+              ></MovieInfo>
+            </div>
           </div>
 
           <Pagination
