@@ -1,39 +1,18 @@
+/* Globals */ 
 html {
   scroll-behavior: smooth;
 }
-
 body {
   background: #000000;
   position: relative;
 }
-
-#pagination button {
-   background: none!important;
-  border: none;
-  padding: 0!important;
-  text-decoration: underline;
-  cursor: pointer;
-}
-.grey-text {
-  color: #424242;
-}
-.white-text {
-  color: white;
-}
-
-.disabled {
-  pointer-events: none;
-}
-
-
 .App {
   padding: 0 0 2em 0;
   margin: 0;
   background: #000000;
 }
 
-
-
+/* Header */
 .title-bar {
   top: 0;
   padding: .6em 1em;
@@ -187,6 +166,28 @@ body {
 }
 .top-bar ul {
   background: #424242;
+}
+
+
+
+
+
+#pagination button {
+   background: none!important;
+  border: none;
+  padding: 0!important;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.grey-text {
+  color: #424242;
+}
+.white-text {
+  color: white;
+}
+
+.disabled {
+  pointer-events: none;
 }
 
 
