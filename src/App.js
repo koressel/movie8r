@@ -15,7 +15,6 @@ class Movie8r extends React.Component {
     this.state = {
       APIKEY: '5dee9b99bfc124fbabfa815c9bb193ba',
       baseURL: 'https://api.themoviedb.org/3/',
-      popularPosterElements: [],
       movieElements: [],
       currentURL: 'https://api.themoviedb.org/3/discover/movie?&api_key=5dee9b99bfc124fbabfa815c9bb193ba',
       nextURL: '',
@@ -48,27 +47,6 @@ class Movie8r extends React.Component {
         let maxPage = resultObj.total_pages;
         let result = resultObj.results;
         let backdropID = 1;
-        let popularPosterElements = result.map(movie => {
-          if (backdropID === 1) {
-            return (
-              <li className="is-active orbit-slide" key={backdropID}>
-                <figure className="orbit-figure">
-                  <img className="orbit-image" src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="Space" />
-                </figure>
-              </li>
-            );
-          }
-          else {
-            return (
-              <li className="orbit-slide" key={backdropID}>
-                <figure className="orbit-figure">
-                  <img className="orbit-image" src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="Space" />
-                </figure>
-              </li>
-            );
-          }
-
-        });
         let movieElements = result.map(movie => {
           return (
             <div className="movie cell small-4 medium-3 large-2" key={movie.id}>
@@ -77,7 +55,7 @@ class Movie8r extends React.Component {
           );
         });
 
-        this.setState({ movieElements: movieElements, maxPage: maxPage, popularPosterElements: popularPosterElements });
+        this.setState({ movieElements: movieElements, maxPage: maxPage});
       });
   }
 
