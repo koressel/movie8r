@@ -1,5 +1,4 @@
 import React from "react";
-import 'jquery';
 
 
 class MovieInfo extends React.Component {
@@ -27,16 +26,24 @@ class MovieInfo extends React.Component {
         fetch(movieUrl)
           .then(res => res.json())
           .then(resObj => {
+            let releaseDate = resObj.release_date;
+
+            // format date
+            let year = releaseDate.substr(0, releaseDate.indexOf('-'));
+            let day = releaseDate.substr(releaseDate.length - 2, releaseDate.length);
+            let month = releaseDate.substr(releaseDate.indexOf('-')+1, releaseDate.indexOf('-')-2);
+            let formattedDate = `${month}/${day}/${year}`;
+
             this.setState({
               movieId: _movieId,
-              title: resObj.original_title, 
-              backdrop_path: resObj.backdrop_path, 
+              title: resObj.original_title,
+              backdrop_path: resObj.backdrop_path,
               overview: resObj.overview,
-              release_date: resObj.release_date,
+              release_date: formattedDate,
             })
           });
       }
-      }
+    }
   }
 
   handleBackClick(e) {
@@ -45,12 +52,16 @@ class MovieInfo extends React.Component {
 
   render() {
     return (
-      <div id="info">
-        <button onClick={this.handleBackClick}><i className="fi-arrow-left white-text"></i></button><br/>
-        <img src={`https://image.tmdb.org/t/p/w500${this.state.backdrop_path}`} />
-        <h1>{this.state.title}</h1>
-        <p>Released: {this.state.release_date}</p>
-        <p>{this.state.overview}</p>
+      <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+          <div class="cell small-12">
+            <button onClick={this.handleBackClick}><i className="fi-arrow-left white-text"></i></button><br />
+            <img src={`https://image.tmdb.org/t/p/w500${this.state.backdrop_path}`} />
+            <h1>{this.state.title}</h1>
+            <p>Released: {this.state.release_date}</p>
+            <p>{this.state.overview}</p>
+          </div>
+        </div>
       </div>
     )
   }
