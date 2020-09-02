@@ -6,7 +6,10 @@ import SearchBar from './components/searchbar';
 import GenreMenu from './components/genremenu';
 import Pagination from './components/pagination';
 import MovieInfo from './components/movieinfo';
-console.log(process.env.REACT_APP_GOOGLE_API_KEY)
+
+// Paste this in build/index.html
+//<script data-ad-client="ca-pub-7157450414928711" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
 
 class Movie8r extends React.Component {
 
