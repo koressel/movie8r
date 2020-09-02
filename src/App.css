@@ -276,6 +276,10 @@ body {
   display: block;
   margin: 0 auto;
 }
+#info-container .movie-metadata {
+  display: inline;
+  margin-right: 2em;
+}
 .hide {
   display: none;
 }
