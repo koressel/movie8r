@@ -79,17 +79,17 @@ class MovieInfo extends React.Component {
       <div class="grid-container">
         <div class="grid-x grid-margin-x">
           <div class="cell small-12 medium-10 medium-offset-1 large-8 large-offset-2">
-            <button onClick={this.handleBackClick}><i className="fi-arrow-left white-text"></i></button><br />
             <img src={`https://image.tmdb.org/t/p/w500${this.state.backdrop_path}`} alt="Movie backdrop"/>
             <h1>{this.state.title}</h1>
             <p className="movie-metadata">{this.state.release_date}</p>
             <p className="movie-metadata">{this.state.hours}hr {this.state.minutes}min</p>
             <a className="movie-metadata" href={`https://www.imdb.com/title/${this.state.imdb_id}`} target="_blank">IMDB</a>
             <p>{this.state.overview}</p>
-            <h2>Links</h2>
+            <h2>Where to watch</h2>
             <p><a href="#">123movies.co</a></p>
             <p><a href="#">bmovies.io</a></p>
             <p><a href="#">fmovies123.uk.co</a></p>
+            <button onClick={this.handleBackClick}><i className="fi-arrow-left white-text"></i></button>
           </div>
         </div>
       </div>

@@ -1,3 +1,3 @@
- # Movie8r.io
+ # Movie8r
 
- Movie8r is a movie library that helps you browse and find where to watch the latest movies.
+ Movie8r is a movie library that helps you find and watch the latest movies. 

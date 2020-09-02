@@ -269,16 +269,17 @@ body {
 }
 
 #info-container {
-  margin-top: 5em;
+  
   color: white;
 }
 #info-container img {
-  display: block;
-  margin: 0 auto;
+  /* display: block;
+  margin: 0 auto; */
+  width: 100%;
 }
 #info-container .movie-metadata {
   display: inline;
-  margin-right: 2em;
+  margin: 2em 2em 2em 0;
 }
 .hide {
   display: none;

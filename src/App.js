@@ -6,7 +6,7 @@ import SearchBar from './components/searchbar';
 import GenreMenu from './components/genremenu';
 import Pagination from './components/pagination';
 import MovieInfo from './components/movieinfo';
-
+console.log(process.env.REACT_APP_GOOGLE_API_KEY)
 
 class Movie8r extends React.Component {
 
@@ -14,10 +14,10 @@ class Movie8r extends React.Component {
     super(props);
 
     this.state = {
-      APIKEY: '5dee9b99bfc124fbabfa815c9bb193ba',
+      APIKEY: process.env.REACT_APP_TMDB_API_KEY,
       baseURL: 'https://api.themoviedb.org/3/',
       movieElements: [],
-      currentURL: 'https://api.themoviedb.org/3/discover/movie?&api_key=5dee9b99bfc124fbabfa815c9bb193ba',
+      currentURL: `https://api.themoviedb.org/3/discover/movie?&api_key=${process.env.REACT_APP_TMDB_API_KEY}`,
       movieId: 'default',
       nextURL: '',
       page: 1,
@@ -34,6 +34,7 @@ class Movie8r extends React.Component {
 
 
   componentDidMount() {
+    console.log(process.env.REACT_APP_GOOGLE_API_KEY)
     const $ = window.$;
     $(document).foundation();
 
