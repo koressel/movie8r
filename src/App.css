@@ -14,10 +14,10 @@ body {
 
 /* Header */
 .title-bar {
-  top: 0;
+
   padding: .6em 1em;
   width: 100%;
-  position: fixed;
+ 
   z-index: 1;
   transition: top 0.4s;
   background: #212121;
@@ -44,11 +44,11 @@ body {
 .top-bar {
   padding: .6em 1em;
   width: 100%;
-  position: fixed;
+
   z-index: 1;
   transition: top 0.4s;
   background: #212121;
-  top: 0;
+
 }
 
 .top-bar-show {
@@ -265,11 +265,11 @@ body {
 }
 
 #movie-container {
-  margin-top: 5em;
+  margin-top: 2em;
 }
 
 #info-container {
-  
+  margin-top: 2em;
   color: white;
 }
 #info-container img {
@@ -283,6 +283,13 @@ body {
 }
 .hide {
   display: none;
+}
+
+#history h1,p {
+  color: white;
+}
+#history p,h1 {
+  color: white;
 }
 
 .movie img {
