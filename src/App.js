@@ -119,11 +119,6 @@ class Movie8r extends React.Component {
     }
   }
 
-  // This function was originally designed to navigate directly to the video 
-  // player on the target site. However, these kind of websites are notoriously 
-  // flighty and change urls often so the url has been set to the homepage 
-  // of the target site. 
-
   handleMovieClick(e) {
     let movies = document.querySelector('#movie-container');
     let info = document.querySelector('#info-container');
