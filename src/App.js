@@ -451,8 +451,6 @@ class Movie8r extends React.Component {
             page={this.state.page}
           ></Pagination>
         </main>
-
-
       </div>
     );
   }
