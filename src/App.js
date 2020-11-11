@@ -34,7 +34,6 @@ class Movie8r extends React.Component {
 
 
   componentDidMount() {
-    console.log(process.env.REACT_APP_GOOGLE_API_KEY)
     const $ = window.$;
     $(document).foundation();
 
