@@ -130,10 +130,8 @@ class Movie8r extends React.Component {
     // title = title.replace(/ /g, "-");
 
     // window.location.href = `https://bmovie.cc/movies/${title}/`;
-
     // window.location.href = `https://w1.123moviess.cc/`;
 
-  
     movies.classList = ('hide grid-x grid-margin-x');
     pagination.classList = 'hide text-center';
     info.classList = "";
