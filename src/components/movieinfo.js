@@ -76,9 +76,9 @@ class MovieInfo extends React.Component {
 
   render() {
     return (
-      <div class="grid-container">
-        <div class="grid-x grid-margin-x">
-          <div class="cell small-12 medium-10 medium-offset-1 large-8 large-offset-2">
+      <div className="grid-container">
+        <div className="grid-x grid-margin-x">
+          <div className="cell small-12 medium-10 medium-offset-1 large-8 large-offset-2">
             <img src={`https://image.tmdb.org/t/p/w500${this.state.backdrop_path}`} alt="Movie backdrop"/>
             <h1>{this.state.title}</h1>
             <p className="movie-metadata">{this.state.release_date}</p>
