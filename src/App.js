@@ -17,7 +17,7 @@ class Movie8r extends React.Component {
       APIKEY: process.env.REACT_APP_TMDB_API_KEY,
       baseURL: 'https://api.themoviedb.org/3/',
       movieElements: [],
-      currentURL: `https://api.themoviedb.org/3/discover/movie?&api_key=${process.env.REACT_APP_TMDB_API_KEY}`,
+      currentURL: `https://api.themoviedb.org/3/discover/movie?&api_key=${'5dee9b99bfc124fbabfa815c9bb193ba'}`,
       movieId: 'default',
       nextURL: '',
       page: 1,
