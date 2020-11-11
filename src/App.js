@@ -48,6 +48,7 @@ class Movie8r extends React.Component {
           lastPageA.classList.add('disabled');
         }
         let maxPage = resultObj.total_pages;
+        console.log(resultObj);
         let result = resultObj.results;
         let backdropID = 1;
         let movieElements = result.map(movie => {
