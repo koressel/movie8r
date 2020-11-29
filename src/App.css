@@ -285,8 +285,8 @@ body {
   display: none;
 }
 
-large-icon {
-  font-size: 30pt;
+.large-icon {
+  font-size: 20pt;
 }
 
 #history h1,p {
