@@ -10,7 +10,7 @@
     "serve": "^11.3.2"
   },
   "scripts": {
-    "start": "serve -s build",
+    "start": "npm run-script build && serve -s build",
     "build": "react-scripts build",
     "heroku-postbuild": "npm run build",
     "test": "react-scripts test",
