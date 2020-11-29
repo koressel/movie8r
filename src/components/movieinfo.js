@@ -79,6 +79,7 @@ class MovieInfo extends React.Component {
       <div className="grid-container">
         <div className="grid-x grid-margin-x">
           <div className="cell small-12 medium-10 medium-offset-1 large-8 large-offset-2">
+          <button onClick={this.handleBackClick}><i className="fi-arrow-left white-text"></i></button>
             <img src={`https://image.tmdb.org/t/p/w500${this.state.backdrop_path}`} alt="Movie backdrop"/>
             <h1>{this.state.title}</h1>
             <p className="movie-metadata">{this.state.release_date}</p>
@@ -89,7 +90,6 @@ class MovieInfo extends React.Component {
             <p><a href="#">123movies.co</a></p>
             <p><a href="#">bmovies.io</a></p>
             <p><a href="#">fmovies123.uk.co</a></p>
-            <button onClick={this.handleBackClick}><i className="fi-arrow-left white-text"></i></button>
           </div>
         </div>
       </div>
