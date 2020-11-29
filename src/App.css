@@ -285,6 +285,10 @@ body {
   display: none;
 }
 
+large-icon {
+  font-size: 30pt;
+}
+
 #history h1,p {
   color: white;
 }
