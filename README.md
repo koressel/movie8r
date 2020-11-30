@@ -11,6 +11,8 @@ Movie8r is a music library application with over 700,000 movies and TV shows.
 
 ## Installation
 
+Clone or download the project then run the following commands in the root directory.
+
 ```sh
 npm install
 npm start
