@@ -5,7 +5,7 @@
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-Movie8r is a music library application with the .
+Movie8r is a music library application with over 700,000 movies and TV shows.
 
 ![](header.png)
 
