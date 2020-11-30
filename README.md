@@ -13,13 +13,9 @@ Movie8r is a music library application with over 700,000 movies and TV shows.
 
 ```sh
 npm install
+npm start
 ```
-
-Windows:
-
-```sh
-edit autoexec.bat
-```
+> Note that the default start property runs "npm build" before serving the app. If you wish to change this, edit the package.json file.
 
 ## Usage example
 
